@@ -1,0 +1,48 @@
+{
+  "name": "monument-ui",
+  "version": "0.1.0",
+  "description": "Basic UI library for React with 3D elements effect",
+  "main": "./lib/monument-ui.min.js",
+  "scripts": {
+    "build": "webpack --env dev && webpack --env build",
+    "dev": "webpack --progress --colors --watch --env dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JB1905/Monument-UI.git"
+  },
+  "keywords": [
+    "React",
+    "UI",
+    "Monument",
+    "library",
+    "3D"
+  ],
+  "author": "Jakub Biesiada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JB1905/Monument-UI/issues"
+  },
+  "homepage": "https://github.com/JB1905/Monument-UI#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "css-loader": "^1.0.0",
+    "node-sass": "^4.9.4",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.3.0"
+  }
+}
