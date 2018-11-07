@@ -1,0 +1,29 @@
+.alert {
+  padding: 0 12px;
+  margin: 6px 10px;
+  border-radius: 4px;
+  min-height: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &.info {
+    background-color: #2196f3;
+  }
+
+  &.success {
+    background-color: #4caf50;
+  }
+
+  &.warning {
+    background-color: #fb8c00;
+  }
+
+  &.error {
+    background-color: #d32f2f;
+  }
+
+  > div {
+    margin: 4px 2px;
+  }
+}

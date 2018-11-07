@@ -8,17 +8,17 @@ let outputFile, mode, devtool;
 
 if (env === 'build') {
   mode = 'production';
-  outputFile = libraryName + '.min.js';
+  outputFile = `${libraryName}.min.js`;
   devtool = false;
 } else {
   mode = 'development';
-  outputFile = libraryName + '.js';
+  outputFile = `${libraryName}.js`;
   devtool = 'source-map';
 }
 
 const config = {
   mode,
-  entry: __dirname + '/src/index.js',
+  entry: `${__dirname}/src/index.js`,
   externals: {
     react: {
       root: 'React',
@@ -29,7 +29,7 @@ const config = {
   },
   devtool,
   output: {
-    path: __dirname + '/lib',
+    path: `${__dirname}/lib`,
     filename: outputFile,
     library: 'MonumentUI',
     libraryTarget: 'umd',
@@ -45,7 +45,7 @@ const config = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]

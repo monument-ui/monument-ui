@@ -1,0 +1,56 @@
+.preloader {
+  position: relative;
+  margin: 100px auto;
+
+  &.xl {
+    width: 85px;
+    height: 85px;
+  }
+
+  &.lg {
+    width: 70px;
+    height: 70px;
+  }
+
+  &.md {
+    width: 55px;
+    height: 55px;
+  }
+
+  &.sm {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.xs {
+    width: 25px;
+    height: 25px;
+  }
+
+  &__bounce--1,
+  &__bounce--2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: bounce 1.4s infinite ease-in-out;
+  }
+
+  &__bounce--2 {
+    animation-delay: -0.7s;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
