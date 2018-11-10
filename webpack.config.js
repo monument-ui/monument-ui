@@ -33,7 +33,8 @@ const config = {
     filename: outputFile,
     library: 'MonumentUI',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    globalObject: 'global'
   },
   module: {
     rules: [
