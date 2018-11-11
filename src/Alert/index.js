@@ -5,7 +5,7 @@ import './Alert.scss';
 
 const types = ['info', 'success', 'warning', 'error'];
 
-const Alert = ({ className, style, type, title, info, children }) => (
+const Alert = ({ className = '', style = {}, type, title, info, children }) => (
   <div
     className={`alert ${types.includes(type) ? type : 'info'} ${className}`}
     style={style}
