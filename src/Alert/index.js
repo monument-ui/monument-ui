@@ -5,9 +5,9 @@ import './Alert.scss';
 
 const types = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
-const Alert = ({ className = '', style = {}, type, title, info, children }) => (
+const Alert = ({ className = '', type, style = {}, title, info, children }) => (
   <div
-    className={`alert ${types.includes(type) ? type : 'info'} ${className}`}
+    className={`alert ${className} ${types.includes(type) ? type : 'info'}`}
     style={style}
   >
     <div>
@@ -20,8 +20,8 @@ const Alert = ({ className = '', style = {}, type, title, info, children }) => (
 
 Alert.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.node,
   type: PropTypes.string,
+  style: PropTypes.node,
   title: PropTypes.string,
   info: PropTypes.string,
   children: PropTypes.node

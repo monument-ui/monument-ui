@@ -1,0 +1,30 @@
+@import "../mixins.scss";
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.1);
+  overflow: hidden;
+
+  &-title,
+  &-content {
+    padding: 6px 12px;
+  }
+
+  &-footer {
+    border-top: 1px solid #ddd;
+    padding: 12px;
+  }
+
+  &-image {
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &.monument {
+    @include monument;
+  }
+}

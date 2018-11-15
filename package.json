@@ -5,7 +5,8 @@
   "main": "./lib/monument-ui.min.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build",
-    "dev": "webpack --progress --colors --watch --env dev"
+    "dev": "webpack --progress --colors --watch --env dev",
+    "deploy": "gh-pages -d demo/build"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "css-loader": "^1.0.1",
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
