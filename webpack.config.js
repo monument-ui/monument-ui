@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const env = require('yargs').argv.env;
 
-let libraryName = 'monument-ui';
+const libraryName = 'monument-ui';
 
 let outputFile, mode, devtool;
 
