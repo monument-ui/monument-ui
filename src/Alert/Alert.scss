@@ -1,3 +1,5 @@
+@import '../colors.scss';
+
 .alert {
   padding: 10px 12px;
   margin: 6px 10px;
@@ -8,26 +10,26 @@
   align-items: center;
 
   &.primary {
-    background-color: #9575cd;
+    @extend #{'.deep-purple-lighten-2'};
   }
 
   &.secondary {
-    background-color: #b0bec5;
+    @extend #{'.blue-grey-lighten-3'};
   }
 
   &.info {
-    background-color: #2196f3;
+    @extend #{'.blue'};
   }
 
   &.success {
-    background-color: #4caf50;
+    @extend #{'.green'};
   }
 
   &.warning {
-    background-color: #fb8c00;
+    @extend #{'.orange-darken-1'};
   }
 
   &.error {
-    background-color: #d32f2f;
+    @extend #{'.red-darken-2'};
   }
 }
