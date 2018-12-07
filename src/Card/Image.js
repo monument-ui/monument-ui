@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Image = ({ className = '', style = {}, src, alt = '' }) => {
-  return (
-    <figure className={`card-image ${className}`} style={style}>
-      <img src={src} alt={alt} />
-    </figure>
-  );
-};
+const Image = ({ className = '', style = {}, src, alt = '' }) => (
+  <figure className={`card-image ${className}`} style={style}>
+    <img src={src} alt={alt} />
+  </figure>
+);
 
 Image.propTypes = {
   className: PropTypes.string,

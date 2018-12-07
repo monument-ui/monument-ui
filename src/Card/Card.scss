@@ -6,14 +6,17 @@
   box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.1);
   overflow: hidden;
 
-  &-title,
+  &-title {
+    padding: 8px 18px 5px;
+  }
+
   &-content {
-    padding: 6px 12px;
+    padding: 5px 18px 8px;
   }
 
   &-footer {
     border-top: 1px solid #ddd;
-    padding: 12px;
+    padding: 18px;
   }
 
   &-image {

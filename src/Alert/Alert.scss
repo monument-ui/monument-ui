@@ -32,4 +32,12 @@
   &.error {
     @extend #{'.red-darken-2'};
   }
+
+  &.light {
+    @extend #{'.white'};
+  }
+
+  &.dark {
+    @extend #{'.black'};
+  }
 }

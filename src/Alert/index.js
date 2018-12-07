@@ -3,7 +3,16 @@ import PropTypes from 'prop-types';
 
 import './Alert.scss';
 
-const types = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
+const types = [
+  'primary',
+  'secondary',
+  'info',
+  'success',
+  'warning',
+  'error',
+  'light',
+  'dark'
+];
 
 const Alert = ({ className = '', type, style = {}, title, info, children }) => (
   <div
