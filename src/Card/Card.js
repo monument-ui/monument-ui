@@ -13,7 +13,7 @@ const Card = ({ className = '', monument = false, style = {}, children }) => (
 Card.propTypes = {
   className: PropTypes.string,
   monument: PropTypes.bool,
-  style: PropTypes.node,
+  style: PropTypes.object,
   children: PropTypes.node
 };
 

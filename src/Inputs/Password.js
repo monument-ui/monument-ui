@@ -32,7 +32,7 @@ const Password = ({
 Password.propTypes = {
   className: PropTypes.string,
   monument: PropTypes.bool,
-  style: PropTypes.node,
+  style: PropTypes.object,
   onChange: PropTypes.func,
   name: PropTypes.string,
   value: PropTypes.string,

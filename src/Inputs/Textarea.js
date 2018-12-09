@@ -33,7 +33,7 @@ Textarea.propTypes = {
   className: PropTypes.string,
   monument: PropTypes.bool,
   resizable: PropTypes.bool,
-  style: PropTypes.node,
+  style: PropTypes.object,
   onChange: PropTypes.func,
   name: PropTypes.string,
   value: PropTypes.string,

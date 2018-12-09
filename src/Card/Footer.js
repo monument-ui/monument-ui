@@ -9,7 +9,7 @@ const Footer = ({ className = '', style = {}, children }) => (
 
 Footer.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.node,
+  style: PropTypes.object,
   children: PropTypes.node
 };
 

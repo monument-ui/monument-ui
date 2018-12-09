@@ -9,7 +9,7 @@ const Label = ({ className = '', style = {}, children }) => (
 
 Label.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.node,
+  style: PropTypes.object,
   children: PropTypes.node
 };
 

@@ -9,7 +9,7 @@ const Title = ({ className = '', style = {}, link, children }) => (
 
 Title.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.node,
+  style: PropTypes.object,
   link: PropTypes.string,
   children: PropTypes.node
 };

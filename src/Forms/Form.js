@@ -23,7 +23,7 @@ const Form = ({
 
 Form.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.node,
+  style: PropTypes.object,
   method: PropTypes.string,
   action: PropTypes.string,
   type: PropTypes.string,

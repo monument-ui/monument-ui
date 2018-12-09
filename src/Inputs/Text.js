@@ -44,7 +44,7 @@ Text.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
   monument: PropTypes.bool,
-  style: PropTypes.node,
+  style: PropTypes.object,
   onChange: PropTypes.func,
   name: PropTypes.string,
   value: PropTypes.string,

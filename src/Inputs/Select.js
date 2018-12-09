@@ -22,7 +22,7 @@ const Select = ({
 Select.propTypes = {
   className: PropTypes.string,
   monument: PropTypes.bool,
-  style: PropTypes.node,
+  style: PropTypes.object,
   onChange: PropTypes.func,
   value: PropTypes.string,
   children: PropTypes.node

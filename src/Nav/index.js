@@ -17,7 +17,7 @@ const Nav = ({ className = '', type, style = {}, children }) => (
 Nav.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
-  style: PropTypes.node,
+  style: PropTypes.object,
   children: PropTypes.node
 };
 

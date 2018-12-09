@@ -30,7 +30,7 @@ const Alert = ({ className = '', type, style = {}, title, info, children }) => (
 Alert.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
-  style: PropTypes.node,
+  style: PropTypes.object,
   title: PropTypes.string,
   info: PropTypes.string,
   children: PropTypes.node

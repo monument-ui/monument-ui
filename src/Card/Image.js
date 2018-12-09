@@ -9,7 +9,7 @@ const Image = ({ className = '', style = {}, src, alt = '' }) => (
 
 Image.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.node,
+  style: PropTypes.object,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string
 };

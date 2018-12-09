@@ -33,7 +33,7 @@ Button.propTypes = {
   monument: PropTypes.bool,
   circle: PropTypes.bool,
   size: PropTypes.string,
-  style: PropTypes.node,
+  style: PropTypes.object,
   onClick: PropTypes.func,
   children: PropTypes.node
 };

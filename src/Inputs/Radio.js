@@ -25,7 +25,7 @@ const Radio = ({
 Radio.propTypes = {
   className: PropTypes.string,
   monument: PropTypes.bool,
-  style: PropTypes.node,
+  style: PropTypes.object,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
   name: PropTypes.string,
