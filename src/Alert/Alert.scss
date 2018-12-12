@@ -1,4 +1,4 @@
-@import '../colors.scss';
+@import "../colors.scss";
 
 .alert {
   padding: 10px 12px;
@@ -10,34 +10,34 @@
   align-items: center;
 
   &.primary {
-    @extend #{'.deep-purple-lighten-2'};
+    @extend #{".deep-purple-lighten-2"};
   }
 
   &.secondary {
-    @extend #{'.blue-grey-lighten-3'};
+    @extend #{".blue-grey-lighten-3"};
   }
 
   &.info {
-    @extend #{'.blue'};
+    @extend #{".blue"};
   }
 
   &.success {
-    @extend #{'.green'};
+    @extend #{".green"};
   }
 
   &.warning {
-    @extend #{'.orange-darken-1'};
+    @extend #{".orange-darken-1"};
   }
 
   &.error {
-    @extend #{'.red-darken-2'};
+    @extend #{".red-darken-2"};
   }
 
   &.light {
-    @extend #{'.white'};
+    @extend #{".white"};
   }
 
   &.dark {
-    @extend #{'.black'};
+    @extend #{".black"};
   }
 }
