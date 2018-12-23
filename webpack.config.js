@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const path = require('path');
 const env = require('yargs').argv.env;
 
 const libraryName = 'monument-ui';
@@ -40,20 +38,14 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader'
-        }
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
-  },
-  resolve: {
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
   }
 };
 
