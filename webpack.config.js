@@ -17,14 +17,7 @@ if (env === 'build') {
 const config = {
   mode,
   entry: `${__dirname}/src/index.js`,
-  externals: {
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react'
-    }
-  },
+  externals: ['react', 'react-dom', 'styled-components'],
   devtool,
   output: {
     path: `${__dirname}/lib`,
@@ -38,12 +31,8 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
         exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   }

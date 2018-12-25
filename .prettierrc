@@ -1,16 +1,3 @@
 {
-  "overrides": [
-    {
-      "files": "*.scss",
-      "options": {
-        "singleQuote": false
-      }
-    },
-    {
-      "files": "*.js",
-      "options": {
-        "singleQuote": true
-      }
-    }
-  ]
+  "singleQuote": true
 }
