@@ -1,18 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import './Row.scss';
-
-const Row = ({ className = '', style = {}, children }) => (
-  <div className={`row ${className}`} style={style}>
-    {children}
-  </div>
-);
-
-Row.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-  children: PropTypes.node.isRequired
-};
+const Row = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+`;
 
 export default Row;

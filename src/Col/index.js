@@ -1,55 +1,29 @@
-import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import './Col.scss';
+const Col = styled.section`
+  @media screen and (max-width: 768px) {
+    grid-column: span ${({ sm, md, lg, xl }) => sm || md || lg || xl || 12};
+  }
 
-const Col = ({
-  className = '',
-  style = {},
-  children,
-  lg,
-  md,
-  sm,
-  xs
-  /* lgHidden = false,
-  mdHidden = false,
-  smHidden = false,
-  xsHidden = false */
-}) => {
-  let size;
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    grid-column: span ${({ sm, md, lg, xl }) => md || sm || lg || xl || 12};
+  }
 
-  const responsiveGrid = () => {
-    if (window.innerWidth < 768) {
-      size = `col-xs-${xs}`;
-    } else if (window.innerWidth >= 768 && window.innerWidth < 992) {
-      size = `col-sm-${sm}`;
-    } else if (window.innerWidth >= 992 && window.innerWidth < 1200) {
-      size = `col-md-${md}`;
-    } else {
-      size = `col-lg-${lg}`;
-    }
-  };
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+    grid-column: span ${({ sm, md, lg, xl }) => lg || md || xl || sm || 12};
+  }
 
-  responsiveGrid();
-
-  window.addEventListener('resize', () => responsiveGrid());
-
-  return (
-    <section className={`col ${className} ${size}`} style={style}>
-      {children}
-    </section>
-  );
-};
+  @media screen and (min-width: 1200px) {
+    grid-column: span ${({ sm, md, lg, xl }) => xl || lg || md || sm || 12};
+  }
+`;
 
 Col.propTypes = {
-  children: PropTypes.node,
-  gutter: PropTypes.number,
-  style: PropTypes.object,
-  lg: PropTypes.string,
-  md: PropTypes.string,
-  sm: PropTypes.string,
-  xs: PropTypes.string,
-  className: PropTypes.string
+  sm: PropTypes.number,
+  md: PropTypes.number,
+  lg: PropTypes.number,
+  xl: PropTypes.number
 };
 
 export default Col;
