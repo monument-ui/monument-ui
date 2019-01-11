@@ -1,16 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const Content = ({ className = '', style = {}, children }) => (
-  <div className={`card-content ${className}`} style={style}>
-    {children}
-  </div>
-);
-
-Content.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-  children: PropTypes.node
-};
+const Content = styled.div`
+  padding: 0px 18px 8px;
+`;
 
 export default Content;

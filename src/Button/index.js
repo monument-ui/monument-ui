@@ -1,41 +1,67 @@
-import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import './Button.scss';
+const Button = styled.button`
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: ${({ circle }) => (circle ? '999px' : '4px')};
+  border: 0;
+  display: inline-block;
 
-const sizes = ['xl', 'lg', 'md', 'sm', 'xs'];
+  ${({ size }) =>
+    (size === 'xl' &&
+      `
+      font-size: 28px;
+      padding: 12px 30px;`) ||
+    (size === 'lg' &&
+      `
+      font-size: 24px;
+      padding: 10px 26px;`) ||
+    (size === 'md' &&
+      `
+      font-size: 20px;
+      padding: 8px 20px;`) ||
+    (size === 'sm' &&
+      `
+      font-size: 16px;
+      padding: 6px 14px;`) ||
+    (size === 'xs' &&
+      `
+      font-size: 14px;
+      padding: 4px 10px;`)}
 
-const Button = ({
-  submit,
-  className = '',
-  monument = false,
-  circle = false,
-  size,
-  style = {},
-  onClick,
-  children
-}) => (
-  <button
-    type={submit ? 'submit' : 'button'}
-    className={`button ${className}  ${monument ? 'monument' : ''} ${
-      circle ? 'circle' : ''
-    } ${sizes.includes(size) ? size : 'md'}`}
-    style={style}
-    onClick={onClick}
-  >
-    {children}
-  </button>
-);
+  :not(:disabled) {
+    ${({ monument, perspective }) => {
+      return monument
+        ? import('../helpers/monument').then(style => style(perspective))
+        : '';
+    }}
+  }
+
+  :disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+`;
 
 Button.propTypes = {
-  submit: PropTypes.bool,
-  className: PropTypes.string,
-  monument: PropTypes.bool,
+  size: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
   circle: PropTypes.bool,
-  size: PropTypes.string,
-  style: PropTypes.object,
-  onClick: PropTypes.func,
-  children: PropTypes.node
+  monument: PropTypes.bool,
+  perspective: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number
+  })
+};
+
+Button.defaultProps = {
+  size: 'md',
+  circle: false,
+  monument: false,
+  perspective: {
+    x: 5,
+    y: 5
+  }
 };
 
 export default Button;

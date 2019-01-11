@@ -1,31 +1,14 @@
-import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Select = ({
-  className = '',
-  monument = false,
-  style = {},
-  onChange,
-  value,
-  children
-}) => (
-  <select
-    className={`input input-select ${className} ${monument ? 'monument' : ''}`}
-    style={style}
-    onChange={onChange}
-    value={value}
-  >
-    {children}
-  </select>
-);
+const Select = styled.select`
+  ${({ monument }) => {
+    return monument ? import('../helpers/monument').then(style => style) : '';
+  }}
+`;
 
 Select.propTypes = {
-  className: PropTypes.string,
-  monument: PropTypes.bool,
-  style: PropTypes.object,
-  onChange: PropTypes.func,
-  value: PropTypes.string,
-  children: PropTypes.node
+  monument: PropTypes.bool
 };
 
 export default Select;

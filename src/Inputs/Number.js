@@ -1,76 +1,52 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import Button from '../Button';
+import Text from './Text';
 
-export default function Number({
-  className = '',
-  monument = false,
-  style = {},
-  onChange,
-  name,
-  value,
-  disabled,
-  readonly,
-  required,
-  min,
-  max,
-  step
-}) {
+const Base = styled.div``;
+
+const Input = styled(Text)`
+  -moz-appearance: textfield;
+
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+
+const Number = ({ monument, ...props }) => {
   const ref = React.createRef();
 
   return (
-    <div className="input-number">
+    <Base>
       <Button
-        className="input-number-down"
         style={{ padding: 0 }}
         monument={monument}
         onClick={() => ref.current.stepDown()}
-      >
-        -
-      </Button>
-
-      <input
-        type="number"
-        ref={ref}
-        className={`input input-number-value ${className} ${
-          monument ? 'monument' : ''
-        }`}
-        style={style}
-        onChange={onChange}
-        name={name}
-        value={value}
-        disabled={disabled}
-        readOnly={readonly}
-        required={required}
-        min={min}
-        max={max}
-        step={step}
+        value="-"
       />
 
+      <Input type="number" ref={ref} {...props} />
+
       <Button
-        className="input-number-up"
         style={{ padding: 0 }}
         monument={monument}
         onClick={() => ref.current.stepUp()}
-      >
-        +
-      </Button>
-    </div>
+        value="+"
+      />
+    </Base>
   );
-}
+};
 
 Number.propTypes = {
-  className: PropTypes.string,
-  monument: PropTypes.bool,
-  style: PropTypes.object,
-  onChange: PropTypes.func,
-  name: PropTypes.string,
-  value: PropTypes.string,
-  disabled: PropTypes.bool,
-  readonly: PropTypes.bool,
-  required: PropTypes.bool,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number
+  monument: PropTypes.bool
 };
+
+Number.defaultProps = {
+  monument: false
+};
+
+export default Number;

@@ -1,17 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const Title = ({ className = '', style = {}, link, children }) => (
-  <h3 className={`card-title ${className}`} style={style}>
-    {link ? <a href={link}>{children}</a> : children}
-  </h3>
-);
-
-Title.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-  link: PropTypes.string,
-  children: PropTypes.node
-};
+const Title = styled.h3`
+  font-weight: 500;
+  padding: 3px 16px;
+`;
 
 export default Title;

@@ -1,24 +1,20 @@
-import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import './Nav.scss';
-
-const types = ['normal', 'sticky', 'fixed', 'vertical'];
-
-const Nav = ({ className = '', type, style = {}, children }) => (
-  <nav
-    className={`nav ${className} ${types.includes(type) ? type : 'normal'}`}
-    style={style}
-  >
-    {children}
-  </nav>
-);
+const Nav = styled.nav`
+  top: 0;
+  position: ${({ type }) =>
+    (type === 'normal' && 'relative') ||
+    (type === 'sticky' && 'sticky') ||
+    (type === 'fixed' && 'fixed')};
+`;
 
 Nav.propTypes = {
-  className: PropTypes.string,
-  type: PropTypes.string,
-  style: PropTypes.object,
-  children: PropTypes.node
+  type: PropTypes.oneOf(['normal', 'sticky', 'fixed', 'vertical'])
+};
+
+Nav.defaultProps = {
+  type: 'normal'
 };
 
 export default Nav;

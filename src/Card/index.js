@@ -1,5 +1,3 @@
-import './Card.scss';
-
 import Card from './Card';
 import Image from './Image';
 import Title from './Title';

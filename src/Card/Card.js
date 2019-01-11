@@ -1,20 +1,22 @@
-import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Card = ({ className = '', monument = false, style = {}, children }) => (
-  <article
-    className={`card ${className} ${monument ? 'monument' : ''}`}
-    style={style}
-  >
-    {children}
-  </article>
-);
+const Card = styled.article`
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+
+  ${({ monument }) => {
+    return monument ? import('../helpers/monument').then(style => style) : '';
+  }}
+`;
 
 Card.propTypes = {
-  className: PropTypes.string,
-  monument: PropTypes.bool,
-  style: PropTypes.object,
-  children: PropTypes.node
+  monument: PropTypes.bool
+};
+
+Card.defaultProps = {
+  monument: false
 };
 
 export default Card;

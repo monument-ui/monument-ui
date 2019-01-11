@@ -1,26 +1,15 @@
-import './reset.scss';
-import './colors.scss';
-import './typography.scss';
-import './helpers.scss';
-import './shadows.scss';
+export { Reset, colors, monument } from './helpers';
 
-export Alert from './Alert';
-export Button from './Button';
-export Card from './Card';
-export Col from './Col';
-export Container from './Container';
-export Dropdown from './Dropdown';
-export Footer from './Footer';
-export {
-  Text,
-  Password,
-  Textarea,
-  Number,
-  CheckBox,
-  Select,
-  Radio
-} from './Inputs';
-export Nav from './Nav';
-export Preloader from './Preloader';
-export Row from './Row';
-export Table from './Table';
+export { default as Alert } from './Alert';
+export { default as Button } from './Button';
+export { default as Card } from './Card';
+export { default as Col } from './Col';
+export { default as Container } from './Container';
+export { default as Dropdown } from './Dropdown';
+export { default as Footer } from './Footer';
+export { Text, Textarea, Number, CheckBox, Select, Radio } from './Inputs';
+export { default as Nav } from './Nav';
+export { default as Label } from './Label';
+export { default as Loader } from './Loader';
+export { default as Row } from './Row';
+export { default as Table } from './Table';

@@ -1,9 +1,6 @@
-import './Inputs.scss';
-
-export Text from './Text';
-export Textarea from './Textarea';
-export Password from './Password';
-export Number from './Number';
-export Select from './Select';
-export Radio from './Radio';
-export CheckBox from './CheckBox';
+export { default as Text } from './Text';
+export { default as Textarea } from './Textarea';
+export { default as Number } from './Number';
+export { default as Select } from './Select';
+export { default as Radio } from './Radio';
+export { default as CheckBox } from './CheckBox';

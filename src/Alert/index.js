@@ -8,7 +8,6 @@ const { deepPurple, blueGrey, blue, green, orange, red, white, black } = colors;
 
 const Base = styled.div`
   padding: 10px 12px;
-  margin: 6px 10px;
   border-radius: 4px;
   min-height: 40px;
   display: flex;

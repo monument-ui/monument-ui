@@ -1,46 +1,39 @@
-import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Textarea = ({
-  className = '',
-  monument = false,
-  resizable = false,
-  style = {},
-  onChange,
-  name,
-  value,
-  placeholder,
-  disabled,
-  readonly,
-  required
-}) => (
-  <textarea
-    className={`input input-textarea ${className} ${
-      monument ? 'monument' : ''
-    } ${resizable ? 'resizable' : ''}`}
-    style={style}
-    onChange={onChange}
-    name={name}
-    value={value}
-    placeholder={placeholder}
-    disabled={disabled}
-    readOnly={readonly}
-    required={required}
-  />
-);
+import input from './Input';
+
+const Textarea = styled.textarea`
+  width: 100%;
+  min-height: 140px;
+
+  ${input}
+
+  resize: ${({ resize }) => resize};
+
+  ${({ monument, perspective }) => {
+    return monument
+      ? import('../helpers/monument').then(style => style(perspective))
+      : '';
+  }}
+`;
 
 Textarea.propTypes = {
-  className: PropTypes.string,
+  resize: PropTypes.string,
   monument: PropTypes.bool,
-  resizable: PropTypes.bool,
-  style: PropTypes.object,
-  onChange: PropTypes.func,
-  name: PropTypes.string,
-  value: PropTypes.string,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool,
-  readonly: PropTypes.bool,
-  required: PropTypes.bool
+  perspective: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number
+  })
+};
+
+Textarea.defaultProps = {
+  resize: 'none',
+  monument: false,
+  perspective: {
+    x: 5,
+    y: 5
+  }
 };
 
 export default Textarea;

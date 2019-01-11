@@ -1,57 +1,22 @@
-import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const types = [
-  'text',
-  'email',
-  'tel',
-  'url',
-  'search',
-  'datetime-local',
-  'month',
-  'time',
-  'week'
-];
+import input from './Input';
 
-const Text = ({
-  type,
-  className = '',
-  monument = false,
-  style = {},
-  onChange,
-  name,
-  value,
-  placeholder,
-  disabled,
-  autocomplete,
-  autofocus
-}) => (
-  <input
-    type={types.includes(type) ? type : 'text'}
-    className={`input input-text ${className} ${monument ? 'monument' : ''}`}
-    style={style}
-    onChange={onChange}
-    name={name}
-    value={value}
-    placeholder={placeholder}
-    disabled={disabled}
-    autoComplete={autocomplete}
-    autoFocus={autofocus}
-  />
-);
+const Text = styled.input`
+  ${input}
+
+  ${({ monument }) => {
+    return monument ? import('../helpers/monument').then(style => style) : '';
+  }}
+`;
 
 Text.propTypes = {
-  type: PropTypes.string,
-  className: PropTypes.string,
-  monument: PropTypes.bool,
-  style: PropTypes.object,
-  onChange: PropTypes.func,
-  name: PropTypes.string,
-  value: PropTypes.string,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool,
-  autocomplete: PropTypes.bool,
-  autofocus: PropTypes.bool
+  monument: PropTypes.bool
+};
+
+Text.defaultProps = {
+  monument: false
 };
 
 export default Text;

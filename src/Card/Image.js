@@ -1,17 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Image = ({ className = '', style = {}, src, alt = '' }) => (
-  <figure className={`card-image ${className}`} style={style}>
-    <img src={src} alt={alt} />
-  </figure>
+const Base = styled.figure`
+  position: relative;
+  width: 100%;
+`;
+
+const Image = ({ style, src, alt, ...props }) => (
+  <Base style={style}>
+    <img src={src} alt={alt} {...props} />
+  </Base>
 );
 
 Image.propTypes = {
-  className: PropTypes.string,
   style: PropTypes.object,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string
+};
+
+Image.defaultProps = {
+  alt: ''
 };
 
 export default Image;

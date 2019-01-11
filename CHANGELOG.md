@@ -8,9 +8,11 @@
 ## 0.1.0 (Soon)
 #### New Feature
 ##### Buttons
+- custom colors
 - 5 sizes: `xl`, `lg`, `md`, `sm`, `xs`
 
 ##### Inputs
+- Text (password, search, email etc.)
 - Textarea
 - Number
 - CheckBox
@@ -24,8 +26,16 @@
 - Card image
 - Card footer
 
+##### Footer
+
+##### Label
+
+##### Loader
+- custom colors
 - 5 sizes: `xl`, `lg`, `md`, `sm`, `xs`
 
+##### Nav
 
+##### Row & Col
 
 ##### Table

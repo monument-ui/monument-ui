@@ -1,22 +1,19 @@
-import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import './Container.scss';
-
-const Container = ({ className = '', fluid = false, style = {}, children }) => (
-  <div
-    className={`container ${className} ${fluid ? 'fluid' : ''}`}
-    style={style}
-  >
-    {children}
-  </div>
-);
+const Container = styled.main`
+  margin: 0 auto;
+  max-width: ${({ maxWidth, fluid }) => (fluid ? 100 : maxWidth)}em;
+`;
 
 Container.propTypes = {
-  className: PropTypes.string,
-  fluid: PropTypes.bool,
-  style: PropTypes.object,
-  children: PropTypes.node.isRequired
+  maxWidth: PropTypes.number,
+  fluid: PropTypes.bool
+};
+
+Container.defaultProps = {
+  maxWidth: 72,
+  fluid: false
 };
 
 export default Container;
