@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { count } from './perspective';
+import { layers } from './layers';
 
 export const Text = styled.p`
   ${({ perspective = { x: 5, y: 5 }, color = '#ccc' }) => `
-    text-shadow: ${count(perspective.x, perspective.y, color)};
+    text-shadow: ${layers(perspective.x, perspective.y, color)};
 
     padding-${
       perspective.x > 0 ? `right: ${perspective.x}` : `left: ${-perspective.x}`

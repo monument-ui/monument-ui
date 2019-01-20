@@ -1,4 +1,4 @@
-export const count = (x, y, color) => {
+export const layers = (x, y, color) => {
   /*if (x > Element.offsetWidth / 2) x = Element.offsetWidth / 2;
   if (y > Element.offsetHeight / 2) y = Element.offsetHeight / 2;*/
 
