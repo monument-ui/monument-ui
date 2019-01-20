@@ -10,8 +10,5 @@ $ npm install monument-ui
 $ yarn add monument-ui
 ```
 
-## Components
-**Soon!**
-
 ## License
 This project is licensed under the MIT License © 2018-present Jakub Biesiada
