@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const path = require('path');
 const env = require('yargs').argv.env;
 
 const libraryName = 'monument-ui';
@@ -19,14 +17,7 @@ if (env === 'build') {
 const config = {
   mode,
   entry: `${__dirname}/src/index.js`,
-  externals: {
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react'
-    }
-  },
+  externals: ['react', 'react-dom', 'styled-components'],
   devtool,
   output: {
     path: `${__dirname}/lib`,
@@ -40,20 +31,10 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        loader: 'babel-loader',
+        exclude: /node_modules/
       }
     ]
-  },
-  resolve: {
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
   }
 };
 
