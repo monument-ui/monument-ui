@@ -1,1 +1,2 @@
-export monument from './monument';
+export { Element } from './Element';
+export { Text } from './Text';
