@@ -3,11 +3,48 @@
 [![NPM version](http://img.shields.io/npm/v/monument-ui.svg?style=flat-square)](https://www.npmjs.com/package/monument-ui)
 [![NPM downloads](http://img.shields.io/npm/dm/monument-ui.svg?style=flat-square)](https://www.npmjs.com/package/monument-ui)
 
+## About
+Monument UI is a JavaScript library which will help you add 3D element and text effect to existing components or to create new ones.
+
+### Demo
+[See plugin in action](#)
+
 ## How to Use
 **• Install plugin via favourite package manager:**
 ```sh
 $ npm install monument-ui
 $ yarn add monument-ui
+```
+
+## Getting Started
+Connect libary with project using ES6 import:
+
+```js
+import { Element, Text } from 'monument-ui';
+```
+
+```js
+export default function App() {
+  // state, effects, etc.
+
+  return (
+    <Element
+      as="button"
+      focusable
+      color="#f00"
+      perspective={{ x: 10, y: -5 }}
+      style={{ /* style */ }}
+    >
+      <Text
+        as="h2"
+        color="#f00"
+        perspective={{ x: -4, y: 6 }}
+      >
+        Hello World!
+      </Text>
+    </Element>
+  );
+}
 ```
 
 ## License

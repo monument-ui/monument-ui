@@ -2,32 +2,34 @@ export const layers = (x, y, color) => {
   /*if (x > Element.offsetWidth / 2) x = Element.offsetWidth / 2;
   if (y > Element.offsetHeight / 2) y = Element.offsetHeight / 2;*/
 
-  let horizontal, vertical;
+  let master, slave;
 
   if (Math.abs(x) >= Math.abs(y)) {
-    horizontal = x;
-    vertical = y;
+    master = x;
+    slave = y;
   } else {
-    horizontal = y;
-    vertical = x;
+    master = y;
+    slave = x;
   }
 
-  let newValue = [];
+  const slaveDifference = Math.abs(slave) / Math.abs(master);
 
-  let j = Math.abs(vertical) / Math.abs(horizontal);
-  let k = 0;
+  let depth = [];
+  let slaveDepth = 0;
 
-  for (let i = 1; i <= Math.abs(horizontal); i++) {
-    k += j;
+  for (let masterDepth = 1; masterDepth <= Math.abs(master); masterDepth++) {
+    slaveDepth += slaveDifference;
 
-    let horiz = Math.abs(x) > Math.abs(y) ? i : k;
-    let vert = Math.abs(x) < Math.abs(y) ? i : k;
+    let horizontal = Math.abs(x) > Math.abs(y) ? masterDepth : slaveDepth;
+    let vertical = Math.abs(x) < Math.abs(y) ? masterDepth : slaveDepth;
 
-    newValue = [
-      ...newValue,
-      `${x > 0 ? horiz : -horiz}px ${y > 0 ? vert : -vert}px 0 ${color}`
+    depth = [
+      ...depth,
+      `${x > 0 ? horizontal : -horizontal}px ${
+        y > 0 ? vertical : -vertical
+      }px 0 ${color}`
     ];
   }
 
-  return newValue.join(',');
+  return depth.join(',');
 };
