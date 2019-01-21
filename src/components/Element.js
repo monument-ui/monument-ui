@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { layers } from './layers';
+import { layers } from '../helpers/layers';
 
 export const Element = styled.div`
   ${({
@@ -54,14 +54,3 @@ export const Element = styled.div`
     `}
   `}
 `;
-
-/*
-  clickable: 'up' || 'down' || 'reverseDir',
-  focusable: 'up' || 'down' || 'reverseDir',
-  onScroll:
-    {
-      mode: 'move' || 'roundAbout',
-      speed: 100,
-      direction: 'straight' || 'reverse'
-    } || false
-*/

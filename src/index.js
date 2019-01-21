@@ -1,2 +1,2 @@
-export { Element } from './Element';
-export { Text } from './Text';
+export { Element } from './components/Element';
+export { Text } from './components/Text';

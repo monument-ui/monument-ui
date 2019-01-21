@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { layers } from './layers';
+import { layers } from '../helpers/layers';
 
 export const Text = styled.p`
   ${({
