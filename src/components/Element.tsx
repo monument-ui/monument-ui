@@ -2,7 +2,19 @@ import styled from 'styled-components';
 
 import { layers } from '../helpers/layers';
 
-export const Element = styled.div`
+interface Props {
+  perspective?: {
+    x: number;
+    y: number;
+  };
+  color?: string;
+  shadow?: string;
+  colorify?: boolean;
+  hoverable?: boolean;
+  clickable?: boolean;
+}
+
+export const Element: Props = styled.div`
   ${({
     perspective = { x: 5, y: 5 },
     color = '#444',
@@ -54,3 +66,14 @@ export const Element = styled.div`
     `}
   `}
 `;
+
+/*
+  clickable: 'up' || 'down' || 'reverseDir',
+  focusable: 'up' || 'down' || 'reverseDir',
+  onScroll:
+    {
+      mode: 'move' || 'roundAbout',
+      speed: 100,
+      direction: 'straight' || 'reverse'
+    } || false
+*/

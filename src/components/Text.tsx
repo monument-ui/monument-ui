@@ -2,7 +2,17 @@ import styled from 'styled-components';
 
 import { layers } from '../helpers/layers';
 
-export const Text = styled.p`
+interface Props {
+  perspective?: {
+    x: number;
+    y: number;
+  };
+  color?: string;
+  shadow?: string;
+  colorify?: boolean;
+}
+
+export const Text: Props = styled.p`
   ${({
     perspective = { x: 5, y: 5 },
     color = '#ccc',

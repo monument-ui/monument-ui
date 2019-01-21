@@ -1,10 +1,18 @@
 import { generateColors } from './generateColors';
 
-export const layers = (x, y, color, shadow, colorify) => {
+interface Props {
+  x: number;
+  y: number;
+  color: string;
+  shadow?: string;
+  colorify?: boolean;
+}
+
+export const layers: Props | any = (x, y, color, shadow, colorify): string => {
   /*if (x > Element.offsetWidth / 2) x = Element.offsetWidth / 2;
   if (y > Element.offsetHeight / 2) y = Element.offsetHeight / 2;*/
 
-  let master, slave;
+  let master: number, slave: number;
 
   if (Math.abs(x) >= Math.abs(y)) {
     master = x;
@@ -14,10 +22,10 @@ export const layers = (x, y, color, shadow, colorify) => {
     slave = x;
   }
 
-  const slaveDifference = Math.abs(slave) / Math.abs(master);
+  const slaveDifference: number = Math.abs(slave) / Math.abs(master);
 
-  let depth = [];
-  let slaveDepth = 0;
+  let depth: string[] = [];
+  let slaveDepth: number = 0;
 
   for (let masterDepth = 1; masterDepth <= Math.abs(master); masterDepth++) {
     slaveDepth += slaveDifference;

@@ -16,7 +16,7 @@ if (env === 'build') {
 
 const config = {
   mode,
-  entry: `${__dirname}/src/index.js`,
+  entry: `${__dirname}/src/index.tsx`,
   externals: ['hex-to-rgba', 'react', 'react-dom', 'styled-components'],
   devtool,
   output: {
@@ -30,9 +30,12 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        resolve: {
+          extensions: ['.tsx']
+        }
       }
     ]
   }

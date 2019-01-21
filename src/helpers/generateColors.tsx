@@ -1,6 +1,6 @@
 import hexToRgba from 'hex-to-rgba';
 
-export const generateColors = color => {
+export const generateColors = (color: string): string => {
   if (!color.includes('rgb')) color = hexToRgba(color);
 
   const list = color.replace(/[rgba() ]/g, '').split(',');
