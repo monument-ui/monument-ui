@@ -29,7 +29,7 @@ Name | Type | Default | Description | Available options
 -|-|-|-|-
 **perspective** | object | `{ x: 5, y: 5 }` | |
 **color** | string | `#444` | |
-**shadow** | string | `` | |
+**shadow** | string | ` ` | |
 **colorify** | boolean | `false` | |
 **hoverable** | boolean | `false` | |
 **clickable** | boolean | `false` | |
@@ -39,7 +39,7 @@ Name | Type | Default | Description | Available options
 -|-|-|-|-
 **perspective** | object | `{ x: 5, y: 5 }` | |
 **color** | string | `#ccc` | |
-**shadow** | string | `` | |
+**shadow** | string | ` ` | |
 **colorify** | boolean | `false` | |
 
 ## Example
