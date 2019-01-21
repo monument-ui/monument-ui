@@ -9,9 +9,6 @@ interface Params {
 }
 
 export const layers: Params | any = (x, y, color, shadow, colorify): string => {
-  /*if (x > Element.offsetWidth / 2) x = Element.offsetWidth / 2;
-  if (y > Element.offsetHeight / 2) y = Element.offsetHeight / 2;*/
-
   let master: number, slave: number;
 
   if (Math.abs(x) >= Math.abs(y)) {
