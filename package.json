@@ -20,11 +20,12 @@
     "url": "https://github.com/JB1905/monument-ui.git"
   },
   "keywords": [
-    "React",
-    "UI",
     "Monument",
+    "UI",
+    "React",
     "library",
-    "3D"
+    "3D",
+    "depth"
   ],
   "bugs": {
     "url": "https://github.com/JB1905/monument-ui/issues"
@@ -60,7 +61,7 @@
   "peerDependencies": {
     "hex-to-rgba": "1.0.2",
     "react": ">= 16.3.0",
-    "react-dom": "^16.7.0",
+    "react-dom": ">= 16.3.0",
     "styled-components": ">=4.0.0"
   }
 }
