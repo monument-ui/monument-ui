@@ -6,13 +6,21 @@ export const Element = styled.div`
   ${({
     perspective = { x: 5, y: 5 },
     color = '#444',
+    shadow = '10px 10px 20px #0005',
+    colorify = false,
     hoverable = false,
     clickable = false
   }) => `
     transition: all 300ms ease;
 
     &:not(:focus):not(:active) {
-      box-shadow: ${layers(perspective.x, perspective.y, color)};
+      box-shadow: ${layers(
+        perspective.x,
+        perspective.y,
+        color,
+        shadow,
+        colorify
+      )};
     }
 
     ${hoverable &&
@@ -25,7 +33,9 @@ export const Element = styled.div`
         box-shadow: ${layers(
           perspective.x > 0 ? perspective.x + 6 : perspective.x - 6,
           perspective.y > 0 ? perspective.y + 6 : perspective.y - 6,
-          color
+          color,
+          shadow,
+          colorify
         )};
 
         transform: translate(${perspective.x > 0 ? -6 : 6}px, ${

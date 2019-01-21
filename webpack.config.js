@@ -17,7 +17,7 @@ if (env === 'build') {
 const config = {
   mode,
   entry: `${__dirname}/src/index.js`,
-  externals: ['react', 'react-dom', 'styled-components'],
+  externals: ['hex-to-rgba', 'react', 'react-dom', 'styled-components'],
   devtool,
   output: {
     path: `${__dirname}/lib`,
