@@ -6,7 +6,7 @@ export const Text = styled.p`
   ${({
     perspective = { x: 5, y: 5 },
     color = '#ccc',
-    shadow = '10px 10px 20px #0005',
+    shadow = '',
     colorify = false
   }) => `
     text-shadow: ${layers(

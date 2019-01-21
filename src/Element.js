@@ -6,7 +6,7 @@ export const Element = styled.div`
   ${({
     perspective = { x: 5, y: 5 },
     color = '#444',
-    shadow = '10px 10px 20px #0005',
+    shadow = '',
     colorify = false,
     hoverable = false,
     clickable = false
@@ -55,7 +55,7 @@ export const Element = styled.div`
   `}
 `;
 
-/*{
+/*
   clickable: 'up' || 'down' || 'reverseDir',
   focusable: 'up' || 'down' || 'reverseDir',
   onScroll:
@@ -64,4 +64,4 @@ export const Element = styled.div`
       speed: 100,
       direction: 'straight' || 'reverse'
     } || false
-}*/
+*/
