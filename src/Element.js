@@ -6,8 +6,8 @@ export const Element = styled.div`
   ${({
     perspective = { x: 5, y: 5 },
     color = '#444',
-    hoverable = true,
-    focusable = true
+    hoverable = false,
+    clickable = false
   }) => `
     transition: all 300ms ease;
 
@@ -20,9 +20,21 @@ export const Element = styled.div`
       &:hover {
         cursor: pointer;
       }
+
+      &:not(:active):hover {
+        box-shadow: ${layers(
+          perspective.x > 0 ? perspective.x + 6 : perspective.x - 6,
+          perspective.y > 0 ? perspective.y + 6 : perspective.y - 6,
+          color
+        )};
+
+        transform: translate(${perspective.x > 0 ? -6 : 6}px, ${
+        perspective.y > 0 ? -6 : 6
+      }px);
+      }
     `}
 
-    ${focusable &&
+    ${clickable &&
       `
       &:focus,
       &:active {
@@ -33,19 +45,8 @@ export const Element = styled.div`
   `}
 `;
 
-/*&:not(:active):hover {
-  box-shadow: ${layers(
-    perspective.x > 0 ? perspective.x + 2 : perspective.x - 2,
-    perspective.y > 0 ? perspective.y + 2 : perspective.y - 2,
-    color
-  )};
-  transform: translate(${perspective.x > 0 ? -2 : 2}px, ${
-  perspective.y > 0 ? -2 : 2
-}px);
-}*/
-
 /*{
-  hoverable: 'up' || 'down' || 'reverseDir',
+  clickable: 'up' || 'down' || 'reverseDir',
   focusable: 'up' || 'down' || 'reverseDir',
   onScroll:
     {

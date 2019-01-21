@@ -30,7 +30,7 @@ export default function App() {
   return (
     <Element
       as="button"
-      focusable
+      clickable
       color="#f00"
       perspective={{ x: 10, y: -5 }}
       style={{ /* style */ }}
