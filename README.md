@@ -7,7 +7,7 @@
 Monument UI is a JavaScript library which will help you add 3D element and text effect to existing components or to create new ones.
 
 ### Demo
-[See plugin in action](#)
+[**See plugin in action**](#)
 
 ## How to Use
 **• Install plugin via favourite package manager:**
@@ -23,6 +23,26 @@ Connect libary with project using ES6 import:
 import { Element, Text } from 'monument-ui';
 ```
 
+## Props
+### Element component
+Name | Type | Default | Description | Available options
+-|-|-|-|-
+**perspective** | object | `{ x: 5, y: 5 }` | |
+**color** | string | `#444` | |
+**shadow** | string | `` | |
+**colorify** | boolean | `false` | |
+**hoverable** | boolean | `false` | |
+**clickable** | boolean | `false` | |
+
+### Text component
+Name | Type | Default | Description | Available options
+-|-|-|-|-
+**perspective** | object | `{ x: 5, y: 5 }` | |
+**color** | string | `#ccc` | |
+**shadow** | string | `` | |
+**colorify** | boolean | `false` | |
+
+## Example
 ```js
 export default function App() {
   // state, effects, etc.

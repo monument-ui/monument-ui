@@ -66,14 +66,3 @@ export const Element: Props = styled.div`
     `}
   `}
 `;
-
-/*
-  clickable: 'up' || 'down' || 'reverseDir',
-  focusable: 'up' || 'down' || 'reverseDir',
-  onScroll:
-    {
-      mode: 'move' || 'roundAbout',
-      speed: 100,
-      direction: 'straight' || 'reverse'
-    } || false
-*/

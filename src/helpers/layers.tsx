@@ -1,6 +1,6 @@
 import { generateColors } from './generateColors';
 
-interface Props {
+interface Params {
   x: number;
   y: number;
   color: string;
@@ -8,7 +8,7 @@ interface Props {
   colorify?: boolean;
 }
 
-export const layers: Props | any = (x, y, color, shadow, colorify): string => {
+export const layers: Params | any = (x, y, color, shadow, colorify): string => {
   /*if (x > Element.offsetWidth / 2) x = Element.offsetWidth / 2;
   if (y > Element.offsetHeight / 2) y = Element.offsetHeight / 2;*/
 
