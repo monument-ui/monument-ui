@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { layers } from '../helpers/layers';
-
 import { Perspective } from '../types/Perspective';
+
+import { layers } from '../helpers/layers';
 
 interface Props {
   perspective?: Perspective;
