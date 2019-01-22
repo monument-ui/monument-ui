@@ -16,6 +16,9 @@ module.exports = {
       jsx: true
     }
   },
+  rules: {
+    'no-unused-vars': 'off'
+  },
   settings: {
     react: {
       version: require('./package.json').devDependencies.react

@@ -1,11 +1,11 @@
 import { generateColors } from './generateColors';
 
 interface Params {
-  x: number;
-  y: number;
+  readonly x: number;
+  readonly y: number;
   color: string;
-  shadow?: string;
-  colorify?: boolean;
+  readonly shadow?: string;
+  readonly colorify?: boolean;
 }
 
 export const layers: Params | any = (x, y, color, shadow, colorify): string => {

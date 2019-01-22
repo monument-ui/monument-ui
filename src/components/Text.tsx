@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 import { layers } from '../helpers/layers';
 
+import { Perspective } from '../types/Perspective';
+
 interface Props {
-  perspective?: {
-    x: number;
-    y: number;
-  };
+  perspective?: Perspective;
   color?: string;
   shadow?: string;
   colorify?: boolean;

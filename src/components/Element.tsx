@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 
+import { Perspective } from '../types/Perspective';
+
 import { layers } from '../helpers/layers';
 
 interface Props {
-  perspective?: {
-    x: number;
-    y: number;
-  };
-  color?: string;
-  shadow?: string;
-  colorify?: boolean;
-  hoverable?: boolean;
-  clickable?: boolean;
+  readonly perspective?: Perspective;
+  readonly color?: string;
+  readonly shadow?: string;
+  readonly colorify?: boolean;
+  readonly hoverable?: boolean;
+  readonly clickable?: boolean;
 }
 
 export const Element: Props = styled.div`
