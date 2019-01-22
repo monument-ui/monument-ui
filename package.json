@@ -31,6 +31,10 @@
     "url": "https://github.com/JB1905/monument-ui/issues"
   },
   "homepage": "https://github.com/JB1905/monument-ui#readme",
+  "dependencies": {
+    "rgbcolor": "^1.0.1",
+    "styled-components": "^4.1.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
@@ -48,11 +52,9 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "gh-pages": "^2.0.1",
-    "prettier": "^1.16.0",
+    "prettier": "^1.16.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "rgbcolor": "^1.0.1",
-    "styled-components": "^4.1.3",
     "typescript": "^3.2.4",
     "typescript-eslint-parser": "^22.0.0",
     "webpack": "^4.29.0",
