@@ -5,5 +5,5 @@
 - added 2 components: Text and Element
 - added `perspective`, `color`, `hoverable` and `clickable` props
 
-## Internal
+#### Internal
 - rewritten with TypeScript & Styled Components
