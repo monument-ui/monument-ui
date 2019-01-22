@@ -17,7 +17,7 @@ if (env === 'build') {
 const config = {
   mode,
   entry: `${__dirname}/src/index.tsx`,
-  externals: ['hex-to-rgba', 'react', 'react-dom', 'styled-components'],
+  externals: ['react', 'react-dom', 'rgbcolor', 'styled-components'],
   devtool,
   output: {
     path: `${__dirname}/lib`,

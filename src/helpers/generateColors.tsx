@@ -1,20 +1,13 @@
-import hexToRgba from 'hex-to-rgba';
+import RGBColor from 'rgbcolor';
+
+import { checkSize } from './checkSize';
 
 export const generateColors = (color: string): string => {
-  if (!color.includes('rgb')) color = hexToRgba(color);
+  const convert = new RGBColor(color);
 
-  const list = color.replace(/[rgba() ]/g, '').split(',');
-
-  for (let i = 0; i < 3; i++) {
-    list[i] =
-      parseInt(list[i]) > 0 && parseInt(list[i]) < 128
-        ? parseInt(list[i]) + 1
-        : parseInt(list[i]) >= 128 &&
-          parseInt(list[i]) <= 255 &&
-          parseInt(list[i]) - 1;
-  }
-
-  color = `rgba(${list})`;
-
-  return color;
+  return `rgba(${checkSize(convert.r) ? convert.r + 1 : convert.r - 1}, ${
+    checkSize(convert.g) ? convert.g + 1 : convert.g - 1
+  }, ${checkSize(convert.b) ? convert.b + 1 : convert.b - 1}, ${
+    convert.alpha
+  })`;
 };
