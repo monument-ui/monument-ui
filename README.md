@@ -9,18 +9,42 @@ Monument UI is a JavaScript library which will help you add 3D element and text 
 ### Demo
 [**See plugin in action**](#)
 
-## How to Use
-**• Install plugin via favourite package manager:**
+## How to Install
+At the beginning install the library in your project via npm:
 ```sh
 $ npm install monument-ui
+```
+
+Or Yarn:
+```sh
 $ yarn add monument-ui
 ```
 
 ## Getting Started
-Connect libary with project using ES6 import:
-
+**• Connect libary with project using ES6 import:**
 ```js
 import { Element, Text } from 'monument-ui';
+```
+
+**• Later create component and pass options:**
+```js
+<Element
+  as={ /* component or DOM element */ }
+  perspective={ /* x, y */ }
+  color={ /* color value */ }
+  shadow={ /* shadow value */ }
+  colorify={ /* true / false */ }
+  hoverable={ /* true / false */ }
+  clickable={ /* true / false */ }
+/>
+
+<Text
+  as={ /* component or DOM element */ }
+  perspective={ /* x, y */ }
+  color={ /* color value */ }
+  shadow={ /* shadow value */ }
+  colorify={ /* true / false */ }
+/>
 ```
 
 ## Props
