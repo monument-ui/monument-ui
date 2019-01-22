@@ -5,10 +5,10 @@ import { Perspective } from '../types/Perspective';
 import { layers } from '../helpers/layers';
 
 interface Props {
-  perspective?: Perspective;
-  color?: string;
-  shadow?: string;
-  colorify?: boolean;
+  readonly perspective?: Perspective;
+  readonly color?: string;
+  readonly shadow?: string;
+  readonly colorify?: boolean;
 }
 
 export const Text: Props = styled.p`
