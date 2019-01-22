@@ -27,20 +27,20 @@ import { Element, Text } from 'monument-ui';
 ### Element component
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-**perspective** | object | `{ x: 5, y: 5 }` | |
-**color** | string | `#444` | |
-**shadow** | string | ` ` | |
-**colorify** | boolean | `false` | |
+**perspective** | object | `{ x: 5, y: 5 }` | Horizontal and vertical depth length | Object with `x` and `y` values
+**color** | string | `#444` | Color of depth effect | Color value in hex, rgb(a) etc.
+**shadow** | string | ` ` | Shadow added to element | e.g.: `10px 10px 20px #222a`
+**colorify** | boolean | `false` | Change color for each layer | Enable `true` / disable `false`
 **hoverable** | boolean | `false` | |
 **clickable** | boolean | `false` | |
 
 ### Text component
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-**perspective** | object | `{ x: 5, y: 5 }` | |
-**color** | string | `#ccc` | |
-**shadow** | string | ` ` | |
-**colorify** | boolean | `false` | |
+**perspective** | object | `{ x: 5, y: 5 }` | Horizontal and vertical depth length | Object with `x` and `y` values
+**color** | string | `#ccc` | Color of depth effect | Color value in hex, rgb(a) etc.
+**shadow** | string | ` ` | Shadow added to text | e.g.: `10px 10px 20px #222a`
+**colorify** | boolean | `false` | Change color for each layer | Enable `true` / disable `false`
 
 ## Example
 ```js
@@ -58,6 +58,7 @@ export default function App() {
       <Text
         as="h2"
         color="#f00"
+        colorify
         perspective={{ x: -4, y: 6 }}
       >
         Hello World!
