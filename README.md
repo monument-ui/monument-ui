@@ -76,7 +76,7 @@ export default function App() {
       as="button"
       clickable
       color="#f00"
-      perspective={{ x: 10, y: -5 }}
+      perspective={{ x: 10, y: '-5em' }}
       style={{ /* style */ }}
     >
       <Text

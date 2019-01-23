@@ -1,8 +1,10 @@
+import toPX from 'to-px';
+
 import { generateColors } from './generateColors';
 
 interface Params {
-  readonly x: number;
-  readonly y: number;
+  x: number | string;
+  y: number | string;
   color: string;
   readonly shadow?: string;
   readonly colorify?: boolean;
@@ -10,6 +12,9 @@ interface Params {
 
 export const layers: Params | any = (x, y, color, shadow, colorify): string => {
   let master: number, slave: number;
+
+  x = typeof x === 'string' ? toPX(x) : x;
+  y = typeof y === 'string' ? toPX(y) : y;
 
   if (Math.abs(x) >= Math.abs(y)) {
     master = x;
