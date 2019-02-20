@@ -1,20 +1,15 @@
-import toPX from 'to-px';
-
 import { generateColors } from './generateColors';
 
-interface Params {
-  x: number | string;
-  y: number | string;
-  color: string;
-  readonly shadow?: string;
-  readonly colorify?: boolean;
-}
+import LayerParams from '../interfaces/LayerParams';
 
-export const layers: Params | any = (x, y, color, shadow, colorify): string => {
+export function countLayers({
+  x,
+  y,
+  color,
+  shadow,
+  colorify
+}: LayerParams): string {
   let master: number, slave: number;
-
-  x = typeof x === 'string' ? toPX(x) : x;
-  y = typeof y === 'string' ? toPX(y) : y;
 
   if (Math.abs(x) >= Math.abs(y)) {
     master = x;
@@ -24,28 +19,27 @@ export const layers: Params | any = (x, y, color, shadow, colorify): string => {
     slave = x;
   }
 
-  const slaveDifference: number = Math.abs(slave) / Math.abs(master);
+  const slaveDiff: number = Math.abs(slave) / Math.abs(master);
 
   let depth: string[] = [];
   let slaveDepth: number = 0;
 
   for (let masterDepth = 1; masterDepth <= Math.abs(master); masterDepth++) {
-    slaveDepth += slaveDifference;
+    slaveDepth += slaveDiff;
 
     if (colorify) color = generateColors(color);
 
     let horizontal = Math.abs(x) > Math.abs(y) ? masterDepth : slaveDepth;
     let vertical = Math.abs(x) < Math.abs(y) ? masterDepth : slaveDepth;
 
-    depth = [
-      ...depth,
+    depth.push(
       `${x > 0 ? horizontal : -horizontal}px ${
         y > 0 ? vertical : -vertical
       }px 0 ${color}`
-    ];
+    );
   }
 
   if (shadow) depth = [...depth, `${shadow}`];
 
   return depth.join(',');
-};
+}

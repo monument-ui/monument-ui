@@ -1,67 +1,94 @@
-import styled from 'styled-components';
+import React, { Component } from 'react';
 
-import { Perspective } from '../types/Perspective';
+import Props from '../interfaces/Props';
+import { Events } from '../types/Events';
 
-import { layers } from '../helpers/layers';
+import { Base } from '../bases/Element';
 
-interface Props {
-  readonly perspective?: Perspective;
-  readonly color?: string;
-  readonly shadow?: string;
-  readonly colorify?: boolean;
-  readonly hoverable?: boolean;
-  readonly clickable?: boolean;
-}
+import { convertUnits } from '../helpers/convertUnits';
+import { countLayers } from '../helpers/layers';
+import { checkMax } from '../helpers/checkMax';
 
-export const Element: Props = styled.div`
-  ${({
-    perspective = { x: 5, y: 5 },
-    color = '#444',
-    shadow = '',
-    colorify = false,
-    hoverable = false,
-    clickable = false
-  }) => `
-    transition: all 300ms ease;
+export class Element extends Component<Props & Events> {
+  el: React.Ref<object> = React.createRef();
 
-    &:not(:focus):not(:active) {
-      box-shadow: ${layers(
-        perspective.x,
-        perspective.y,
-        color,
-        shadow,
-        colorify
-      )};
+  state = {
+    layers: '',
+    depth: {
+      x: 0,
+      y: 0
+    },
+    animate: false
+  };
+
+  generateLayers = (mode?: string): void => {
+    let animate: boolean = false;
+
+    const {
+      perspective = { x: 5, y: 5 },
+      color = '#444',
+      shadow = '',
+      colorify = false,
+      hoverable = false,
+      clickable = false
+    } = this.props;
+
+    let x: number = convertUnits(perspective.x);
+    let y: number = convertUnits(perspective.y);
+
+    let extraX: number;
+    let extraY: number;
+
+    if (mode === 'mouseenter' && hoverable) {
+      extraX = this.el.current.offsetWidth / 10;
+      extraY = this.el.current.offsetHeight / 10;
+
+      animate = true;
+    } else {
+      extraX = 0;
+      extraY = 0;
     }
 
-    ${hoverable &&
-      `
-      &:hover {
-        cursor: pointer;
-      }
+    const max = {
+      x: this.el.current.offsetWidth / 2 + extraX,
+      y: this.el.current.offsetHeight / 2 + extraY
+    };
 
-      &:not(:active):hover {
-        box-shadow: ${layers(
-          perspective.x > 0 ? perspective.x + 6 : perspective.x - 6,
-          perspective.y > 0 ? perspective.y + 6 : perspective.y - 6,
-          color,
-          shadow,
-          colorify
-        )};
+    const axis = checkMax(max, { x, y });
 
-        transform: translate(${perspective.x > 0 ? -6 : 6}px, ${
-        perspective.y > 0 ? -6 : 6
-      }px);
-      }
-    `}
+    axis.x = Math.round(axis.x);
+    axis.y = Math.round(axis.y);
 
-    ${clickable &&
-      `
-      &:focus,
-      &:active {
-        box-shadow: 0, 0, 0 rgba(0, 0, 0, 0);
-        transform: translate(${perspective.x}px, ${perspective.y}px);
-      }
-    `}
-  `}
-`;
+    if (mode === 'click' && clickable) {
+      x = 0;
+      y = 0;
+    }
+
+    this.setState({
+      layers: countLayers({ x: axis.x, y: axis.y, color, shadow, colorify }),
+      depth: { x: axis.x, y: axis.y },
+      animate
+    });
+  };
+
+  componentDidMount() {
+    this.generateLayers();
+
+    window.addEventListener('resize', () => this.generateLayers());
+  }
+
+  render(): JSX.Element {
+    return (
+      <Base
+        ref={this.el}
+        onMouseEnter={() => this.generateLayers('mouseenter')}
+        onMouseLeave={() => this.generateLayers('mouseleave')}
+        onClick={() => this.generateLayers('click')}
+        layers={this.state.layers}
+        depth={this.state.depth}
+        animate={this.state.animate}
+        {...this.props}
+      />
+    );
+  }
+}

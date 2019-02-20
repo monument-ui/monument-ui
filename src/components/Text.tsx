@@ -1,37 +1,55 @@
-import styled from 'styled-components';
+import React, { Component } from 'react';
 
-import { Perspective } from '../types/Perspective';
+import { Base } from '../bases/Text';
 
-import { layers } from '../helpers/layers';
+import Props from '../interfaces/Props';
 
-interface Props {
-  readonly perspective?: Perspective;
-  readonly color?: string;
-  readonly shadow?: string;
-  readonly colorify?: boolean;
+import { convertUnits } from '../helpers/convertUnits';
+import { countLayers } from '../helpers/layers';
+
+export class Text extends Component<Props> {
+  el: React.Ref<object> = React.createRef();
+
+  state = {
+    layers: '',
+    depth: {
+      x: 0,
+      y: 0
+    }
+  };
+
+  generateLayers = () => {
+    const {
+      perspective = { x: 5, y: 5 },
+      color = '#ccc',
+      shadow = '',
+      colorify = false
+    } = this.props;
+
+    let x: number = convertUnits(perspective.x);
+    let y: number = convertUnits(perspective.y);
+
+    this.setState({
+      layers: countLayers({ x, y, color, shadow, colorify }),
+      depth: { x, y }
+    });
+  };
+
+  componentDidMount() {
+    this.generateLayers();
+
+    window.addEventListener('resize', () => this.generateLayers());
+    this.el.current.addEventListener('mouseover', () => this.generateLayers());
+  }
+
+  render(): JSX.Element {
+    return (
+      <Base
+        ref={this.el}
+        layers={this.state.layers}
+        depth={this.state.depth}
+        {...this.props}
+      />
+    );
+  }
 }
-
-export const Text: Props = styled.p`
-  ${({
-    perspective = { x: 5, y: 5 },
-    color = '#ccc',
-    shadow = '',
-    colorify = false
-  }) => `
-    text-shadow: ${layers(
-      perspective.x,
-      perspective.y,
-      color,
-      shadow,
-      colorify
-    )};
-
-    padding-${
-      perspective.x > 0 ? `right: ${perspective.x}` : `left: ${-perspective.x}`
-    }px;
-
-    padding-${
-      perspective.y > 0 ? `bottom: ${perspective.y}` : `top: ${-perspective.y}`
-    }px;
-  `}
-`;
