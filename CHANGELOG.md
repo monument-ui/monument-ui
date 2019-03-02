@@ -5,6 +5,7 @@
 - rewritten with React Hooks (dropped support for React < 16.8.0)
 
 #### Bug Fix
+- fixed clickable action
 - added depth update on window resize
 - fixed padding size when `x` and `y` are strings
 

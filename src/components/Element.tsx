@@ -29,8 +29,6 @@ export const Element = ({
   const [clickEvent, setClickEvent]: [boolean, any] = useState(false);
 
   const generateLayers = (mode?: string): void => {
-    let animated: boolean = false;
-
     let x: number = convertUnits(perspective.x);
     let y: number = convertUnits(perspective.y);
 
@@ -41,7 +39,7 @@ export const Element = ({
       extraX = el.current.offsetWidth / 10;
       extraY = el.current.offsetHeight / 10;
 
-      animated = true;
+      setAnimate(true);
     } else {
       extraX = 0;
       extraY = 0;
@@ -54,12 +52,20 @@ export const Element = ({
 
     const axis: { x: number; y: number } = checkMax(max, { x, y });
 
-    axis.x = Math.round(axis.x);
-    axis.y = Math.round(axis.y);
+    axis.x = Math.round(axis.x + extraX);
+    axis.y = Math.round(axis.y + extraY);
 
-    setLayers(countLayers({ x: axis.x, y: axis.y, color, shadow, colorify }));
-    setDepth({ x: axis.x, y: axis.y });
-    setAnimate(animated);
+    setLayers(
+      countLayers({
+        x: axis.x,
+        y: axis.y,
+        color,
+        shadow,
+        colorify
+      })
+    );
+
+    setDepth({ x: axis.x + extraX, y: axis.y + extraY });
     setClickEvent(clickable);
   };
 
