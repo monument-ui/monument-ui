@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { Base } from '../bases/Text';
 
@@ -7,49 +7,35 @@ import Props from '../interfaces/Props';
 import { convertUnits } from '../helpers/convertUnits';
 import { countLayers } from '../helpers/layers';
 
-export class Text extends Component<Props> {
-  el: React.Ref<object> = React.createRef();
+export const Text = ({
+  perspective = { x: 5, y: 5 },
+  color = '#ccc',
+  shadow = '',
+  colorify = false,
+  ...props
+}: Props): JSX.Element => {
+  const el: React.Ref<object> = useRef();
 
-  state = {
-    layers: '',
-    depth: {
-      x: 0,
-      y: 0
-    }
-  };
+  const [layers, setLayers]: [string, any] = useState('');
+  const [depth, setDepth]: [{ x: number; y: number }, any] = useState({
+    x: 0,
+    y: 0
+  });
 
-  generateLayers = () => {
-    const {
-      perspective = { x: 5, y: 5 },
-      color = '#ccc',
-      shadow = '',
-      colorify = false
-    } = this.props;
-
+  const generateLayers = (): void => {
     let x: number = convertUnits(perspective.x);
     let y: number = convertUnits(perspective.y);
 
-    this.setState({
-      layers: countLayers({ x, y, color, shadow, colorify }),
-      depth: { x, y }
-    });
+    setLayers(countLayers({ x, y, color, shadow, colorify }));
+    setDepth({ x, y });
   };
 
-  componentDidMount() {
-    this.generateLayers();
+  useEffect(() => {
+    generateLayers();
 
-    window.addEventListener('resize', () => this.generateLayers());
-    this.el.current.addEventListener('mouseover', () => this.generateLayers());
-  }
+    window.addEventListener('resize', () => generateLayers());
+    el.current.addEventListener('mouseover', () => generateLayers());
+  }, []);
 
-  render(): JSX.Element {
-    return (
-      <Base
-        ref={this.el}
-        layers={this.state.layers}
-        depth={this.state.depth}
-        {...this.props}
-      />
-    );
-  }
-}
+  return <Base ref={el} layers={layers} depth={depth} {...props} />;
+};

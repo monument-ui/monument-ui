@@ -10,9 +10,19 @@ export const Base: Props & Events = styled.div`
   ${({ animate }) => (animate ? `transition: all 300ms ease` : ``)};
 
   ${({ depth }) => `
-    transform: translate(${depth.x}px, ${depth.y}px);
+    transform: translate(${-depth.x}px, ${-depth.y}px);
     
-    margin-${depth.x > 0 ? `right: ${depth.x}` : `left: ${depth.x}`}px;
-    margin-${depth.y > 0 ? `bottom: ${depth.y}` : `top: ${depth.y}`}px;
+    margin-left: ${depth.x > 0 ? depth.x : -depth.x}px;
+    margin-top: ${depth.y > 0 ? depth.y : -depth.y}px;
+
+    ${({ clickable }) =>
+      clickable
+        ? `
+          &:focus,
+          &:active {
+            transform: translate(0, 0);
+            box-shadow: 0 0 0 0 #0000;
+          }`
+        : ``}
   `}
 `;

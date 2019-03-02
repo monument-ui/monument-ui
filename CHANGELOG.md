@@ -1,5 +1,13 @@
 # Monument UI Changelog
 
+## 1.0.0 beta 1 (Soon)
+#### Breaking Changes
+- rewritten with React Hooks (dropped support for React < 16.8.0)
+
+#### Bug Fix
+- added depth update on window resize
+- fixed padding size when `x` and `y` are strings
+
 ## 0.1.0 alpha 3 (2019-01-23)
 #### New Feature
 - allow string as value of `x` and `y` in `perspective` e.g.: `3vw`, `5em`

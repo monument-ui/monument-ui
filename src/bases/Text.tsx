@@ -6,7 +6,7 @@ export const Base: Props = styled.p`
   text-shadow: ${({ layers }) => layers};
 
   ${({ depth }) => `
-    padding-${depth.x > 0 ? `right: ${depth.x}` : `left: ${depth.x}`}px;
-    padding-${depth.y > 0 ? `bottom: ${depth.y}` : `top: ${depth.y}`}px;
+    margin-left: ${depth.x > 0 ? depth.x : -depth.x}px;
+    margin-top: ${depth.y > 0 ? depth.y : -depth.y}px;
   `}
 `;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Props from '../interfaces/Props';
 import { Events } from '../types/Events';
@@ -9,29 +9,27 @@ import { convertUnits } from '../helpers/convertUnits';
 import { countLayers } from '../helpers/layers';
 import { checkMax } from '../helpers/checkMax';
 
-export class Element extends Component<Props & Events> {
-  el: React.Ref<object> = React.createRef();
+export const Element = ({
+  perspective = { x: 5, y: 5 },
+  color = '#444',
+  shadow = '',
+  colorify = false,
+  hoverable = false,
+  clickable = false,
+  ...props
+}: Props & Events): JSX.Element => {
+  const el: React.Ref<object> = useRef();
 
-  state = {
-    layers: '',
-    depth: {
-      x: 0,
-      y: 0
-    },
-    animate: false
-  };
+  const [layers, setLayers]: [string, any] = useState('');
+  const [depth, setDepth]: [{ x: number; y: number }, any] = useState({
+    x: 0,
+    y: 0
+  });
+  const [animate, setAnimate]: [boolean, any] = useState(false);
+  const [clickEvent, setClickEvent]: [boolean, any] = useState(false);
 
-  generateLayers = (mode?: string): void => {
-    let animate: boolean = false;
-
-    const {
-      perspective = { x: 5, y: 5 },
-      color = '#444',
-      shadow = '',
-      colorify = false,
-      hoverable = false,
-      clickable = false
-    } = this.props;
+  const generateLayers = (mode?: string): void => {
+    let animated: boolean = false;
 
     let x: number = convertUnits(perspective.x);
     let y: number = convertUnits(perspective.y);
@@ -40,55 +38,47 @@ export class Element extends Component<Props & Events> {
     let extraY: number;
 
     if (mode === 'mouseenter' && hoverable) {
-      extraX = this.el.current.offsetWidth / 10;
-      extraY = this.el.current.offsetHeight / 10;
+      extraX = el.current.offsetWidth / 10;
+      extraY = el.current.offsetHeight / 10;
 
-      animate = true;
+      animated = true;
     } else {
       extraX = 0;
       extraY = 0;
     }
 
-    const max = {
-      x: this.el.current.offsetWidth / 2 + extraX,
-      y: this.el.current.offsetHeight / 2 + extraY
+    const max: { x: number; y: number } = {
+      x: el.current.offsetWidth / 2 + extraX,
+      y: el.current.offsetHeight / 2 + extraY
     };
 
-    const axis = checkMax(max, { x, y });
+    const axis: { x: number; y: number } = checkMax(max, { x, y });
 
     axis.x = Math.round(axis.x);
     axis.y = Math.round(axis.y);
 
-    if (mode === 'click' && clickable) {
-      x = 0;
-      y = 0;
-    }
-
-    this.setState({
-      layers: countLayers({ x: axis.x, y: axis.y, color, shadow, colorify }),
-      depth: { x: axis.x, y: axis.y },
-      animate
-    });
+    setLayers(countLayers({ x: axis.x, y: axis.y, color, shadow, colorify }));
+    setDepth({ x: axis.x, y: axis.y });
+    setAnimate(animated);
+    setClickEvent(clickable);
   };
 
-  componentDidMount() {
-    this.generateLayers();
+  useEffect(() => {
+    generateLayers();
 
-    window.addEventListener('resize', () => this.generateLayers());
-  }
+    window.addEventListener('resize', () => generateLayers());
+  }, []);
 
-  render(): JSX.Element {
-    return (
-      <Base
-        ref={this.el}
-        onMouseEnter={() => this.generateLayers('mouseenter')}
-        onMouseLeave={() => this.generateLayers('mouseleave')}
-        onClick={() => this.generateLayers('click')}
-        layers={this.state.layers}
-        depth={this.state.depth}
-        animate={this.state.animate}
-        {...this.props}
-      />
-    );
-  }
-}
+  return (
+    <Base
+      ref={el}
+      onMouseEnter={() => generateLayers('mouseenter')}
+      onMouseLeave={() => generateLayers('mouseleave')}
+      layers={layers}
+      depth={depth}
+      animate={animate}
+      clickable={clickEvent}
+      {...props}
+    />
+  );
+};
