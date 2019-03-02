@@ -55,8 +55,8 @@ Name | Type | Default | Description | Available options
 **color** | string | `#444` | Color of depth effect | Color value in hex, rgb(a) etc.
 **shadow** | string | ` ` | Shadow added to element | e.g.: `10px 10px 20px #222a`
 **colorify** | boolean | `false` | Change color for each layer | Enable `true` / disable `false`
-**hoverable** | boolean | `false` | |
-**clickable** | boolean | `false` | |
+**hoverable** | boolean | `false` | Add layers on hover (only desktop) | Enable `true` / disable `false`
+**clickable** | boolean | `false` | Push element on click | Enable `true` / disable `false`
 
 ### Text component
 Name | Type | Default | Description | Available options
