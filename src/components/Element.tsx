@@ -5,9 +5,7 @@ import { Events } from '../types/Events';
 
 import { Base } from '../bases/Element';
 
-import { convertUnits } from '../helpers/convertUnits';
-import { countLayers } from '../helpers/layers';
-import { checkMax } from '../helpers/checkMax';
+import { convertUnits, countLayers, checkMax } from '../helpers';
 
 export const Element = ({
   perspective = { x: 5, y: 5 },
@@ -18,7 +16,7 @@ export const Element = ({
   clickable = false,
   ...props
 }: Props & Events): JSX.Element => {
-  const el: React.Ref<object> = useRef();
+  const el: React.Ref<HTMLElement> = useRef();
 
   const [layers, setLayers]: [string, any] = useState('');
   const [depth, setDepth]: [{ x: number; y: number }, any] = useState({

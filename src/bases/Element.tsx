@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
-import Props from '../interfaces/Props';
-import { Events } from '../types/Events';
 
-export const Base: Props & Events = styled.div`
+export const Base = styled.div`
   will-change: transform;
-  box-shadow: ${({ layers }) => layers};
+  box-shadow: ${({ layers }: { layers: string }) => layers};
 
   ${({ depth }) => `
     transform: translate(${-depth.x}px, ${-depth.y}px);

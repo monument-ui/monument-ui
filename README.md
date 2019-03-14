@@ -10,7 +10,7 @@ Monument UI is a JavaScript library which will help you add 3D element and text 
 [**See plugin in action**](#)
 
 ## How to Install
-At the beginning install the library in your project via npm:
+First, install the library in your project by npm:
 ```sh
 $ npm install monument-ui
 ```

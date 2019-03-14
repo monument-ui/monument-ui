@@ -4,8 +4,7 @@ import { Base } from '../bases/Text';
 
 import Props from '../interfaces/Props';
 
-import { convertUnits } from '../helpers/convertUnits';
-import { countLayers } from '../helpers/layers';
+import { convertUnits, countLayers } from '../helpers';
 
 export const Text = ({
   perspective = { x: 5, y: 5 },
@@ -14,7 +13,7 @@ export const Text = ({
   colorify = false,
   ...props
 }: Props): JSX.Element => {
-  const el: React.Ref<object> = useRef();
+  const el: React.Ref<HTMLElement> = useRef();
 
   const [layers, setLayers]: [string, any] = useState('');
   const [depth, setDepth]: [{ x: number; y: number }, any] = useState({
