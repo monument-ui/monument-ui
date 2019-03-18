@@ -21,7 +21,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: require('./package.json').devDependencies.react
+      version: 'detect'
     }
   }
 };
