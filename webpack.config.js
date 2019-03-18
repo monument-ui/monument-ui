@@ -24,8 +24,7 @@ module.exports = env => {
       library: 'MonumentUI',
       libraryTarget: 'umd',
       umdNamedDefine: true,
-      globalObject:
-        'typeof window !== "object" ? global.window = global : window'
+      globalObject: 'global'
     },
     module: {
       rules: [

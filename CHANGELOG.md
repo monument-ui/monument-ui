@@ -1,6 +1,6 @@
 # Monument UI Changelog
 
-## 1.0.0 beta 1 (Soon)
+## 1.0.0 alpha 1 (2019-03-18)
 #### Breaking Changes
 - rewritten with React Hooks (dropped support for React < 16.8.0)
 
