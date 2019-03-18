@@ -6,5 +6,6 @@ demo
 .prettierrc
 
 .eslintrc.js
+index.d.ts
 webpack.config.js
 yarn-error.log

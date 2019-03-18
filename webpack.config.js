@@ -16,7 +16,7 @@ module.exports = env => {
   return {
     mode,
     entry: `${__dirname}/src/index.tsx`,
-    externals: ['react', 'react-dom', 'rgbcolor', 'styled-components', 'to-px'],
+    externals: ['color', 'react', 'react-dom', 'styled-components', 'to-px'],
     devtool,
     output: {
       path: `${__dirname}/lib`,

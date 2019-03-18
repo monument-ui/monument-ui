@@ -9,7 +9,8 @@ export function countLayers({
   shadow,
   colorify
 }: LayerParams): string {
-  let master: number, slave: number;
+  let master: number;
+  let slave: number;
 
   if (Math.abs(x) >= Math.abs(y)) {
     master = x;

@@ -7,10 +7,10 @@ import Props from '../interfaces/Props';
 import { convertUnits, countLayers } from '../helpers';
 
 export const Text = ({
-  perspective = { x: 5, y: 5 },
   color = '#ccc',
-  shadow = '',
   colorify = false,
+  perspective = { x: 5, y: 5 },
+  shadow = '',
   ...props
 }: Props): JSX.Element => {
   const el: React.Ref<HTMLElement> = useRef();
@@ -21,20 +21,20 @@ export const Text = ({
     y: 0
   });
 
-  const generateLayers = (): void => {
-    let x: number = convertUnits(perspective.x);
-    let y: number = convertUnits(perspective.y);
-
-    setLayers(countLayers({ x, y, color, shadow, colorify }));
-    setDepth({ x, y });
-  };
-
   useEffect(() => {
+    const generateLayers = (): void => {
+      let x: number = convertUnits(perspective.x);
+      let y: number = convertUnits(perspective.y);
+
+      setLayers(countLayers({ x, y, color, shadow, colorify }));
+      setDepth({ x, y });
+    };
+
     generateLayers();
 
     window.addEventListener('resize', () => generateLayers());
     el.current.addEventListener('mouseover', () => generateLayers());
-  }, []);
+  }, [color, colorify, perspective.x, perspective.y, shadow]);
 
   return <Base ref={el} layers={layers} depth={depth} {...props} />;
 };

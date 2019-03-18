@@ -5,7 +5,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:react/recommended'
   ],
-  plugins: ['prettier'],
+  plugins: ['prettier', 'react-hooks'],
   env: {
     browser: true
   },
@@ -17,6 +17,8 @@ module.exports = {
     }
   },
   rules: {
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'no-unused-vars': 'off'
   },
   settings: {
