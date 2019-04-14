@@ -25,8 +25,8 @@ export const Text = ({
     const generateLayers = (): void => {
       setLayers(
         countLevels({
-          x: depth.x,
-          y: depth.y,
+          x: convertUnits(perspective.x),
+          y: convertUnits(perspective.y),
           color,
           shadow,
           colorify
@@ -38,7 +38,7 @@ export const Text = ({
 
     window.addEventListener('resize', () => generateLayers());
     window.removeEventListener('resize', () => generateLayers());
-  }, [color, colorify, depth.x, depth.y, shadow]);
+  }, [color, colorify, perspective.x, perspective.y, shadow]);
 
   return <Base layers={layers} depth={depth} {...props} />;
 };
