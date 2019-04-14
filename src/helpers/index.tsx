@@ -1,3 +1,3 @@
 export { convertUnits } from './convertUnits';
-export { countLayers } from './layers';
-export { checkMax } from './checkMax';
+export { countLevels } from './countLevels';
+export { setMax } from './setMax';

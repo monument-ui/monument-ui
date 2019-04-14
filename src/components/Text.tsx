@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Base } from '../bases/Text';
 
-import Props from '../interfaces/Props';
+import { Props } from '../interfaces';
+import { Depth } from '../types';
 
-import { convertUnits, countLayers } from '../helpers';
+import { convertUnits, countLevels } from '../helpers';
 
 export const Text = ({
   color = '#ccc',
@@ -13,28 +14,30 @@ export const Text = ({
   shadow = '',
   ...props
 }: Props): JSX.Element => {
-  const el: React.Ref<HTMLElement> = useRef();
+  const [layers, setLayers] = useState<string>('');
 
-  const [layers, setLayers]: [string, any] = useState('');
-  const [depth, setDepth]: [{ x: number; y: number }, any] = useState({
-    x: 0,
-    y: 0
-  });
+  const depth: Depth = {
+    x: convertUnits(perspective.x),
+    y: convertUnits(perspective.y)
+  };
 
   useEffect(() => {
     const generateLayers = (): void => {
-      let x: number = convertUnits(perspective.x);
-      let y: number = convertUnits(perspective.y);
-
-      setLayers(countLayers({ x, y, color, shadow, colorify }));
-      setDepth({ x, y });
+      setLayers(
+        countLevels({
+          x: depth.x,
+          y: depth.y,
+          color,
+          shadow,
+          colorify
+        })
+      );
     };
 
     generateLayers();
 
     window.addEventListener('resize', () => generateLayers());
-    el.current.addEventListener('mouseover', () => generateLayers());
-  }, [color, colorify, perspective.x, perspective.y, shadow]);
+  }, [color, colorify, depth.x, depth.y, shadow]);
 
-  return <Base ref={el} layers={layers} depth={depth} {...props} />;
+  return <Base layers={layers} depth={depth} {...props} />;
 };

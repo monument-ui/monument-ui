@@ -1,4 +1,4 @@
-import { Perspective } from '../types/Perspective';
+import { Perspective } from '../types';
 
 export default interface Props {
   readonly perspective: Perspective;

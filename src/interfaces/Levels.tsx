@@ -1,4 +1,4 @@
-export default interface LayerParams {
+export default interface Levels {
   x: number;
   y: number;
   color: string;
