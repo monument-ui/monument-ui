@@ -1,7 +1,7 @@
 src
 demo
 
-.babelrc
+tsconfig.json
 .travis.yml
 .prettierrc
 

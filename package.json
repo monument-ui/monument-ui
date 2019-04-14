@@ -1,6 +1,6 @@
 {
   "name": "monument-ui",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-beta.1",
   "description": "Add 3D effect to React elements",
   "author": "Jakub Biesiada",
   "license": "MIT",
@@ -37,17 +37,10 @@
     "to-px": "^1.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
     "@types/color": "^3.0.0",
     "@types/react": "^16.8.13",
     "@types/styled-components": "^4.1.14",
     "@typescript-eslint/parser": "^1.6.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.5",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
@@ -57,6 +50,7 @@
     "prettier": "^1.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "ts-loader": "^5.3.3",
     "typescript": "^3.4.3",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0"

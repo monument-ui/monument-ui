@@ -22,16 +22,14 @@ module.exports = env => {
       path: `${__dirname}/lib`,
       filename: outputFile,
       library: 'MonumentUI',
-      libraryTarget: 'umd',
-      umdNamedDefine: true,
-      globalObject: 'global'
+      libraryTarget: 'commonjs2'
     },
     module: {
       rules: [
         {
-          test: /\.tsx$/,
-          loader: 'babel-loader',
-          exclude: /node_modules/,
+          test: /\.tsx?$/,
+          loader: ['ts-loader'],
+          exclude: [/node_modules/],
           resolve: {
             extensions: ['.tsx']
           }

@@ -1,5 +1,21 @@
 # Monument UI Changelog
 
+## 1.0.0 beta 1 (2019-04-14)
+#### Bug Fix
+- fixed hoverable
+- fixed elements positioning
+- fixed default elements positioning
+
+#### Improvement
+- Improved generateColors 
+
+#### Internal
+- rewritten layers function
+- added setMode state for `Element` component
+
+#### Repository Changes
+- switched from `babel` to `typescript` loader
+
 ## 1.0.0 alpha 1 (2019-03-18)
 #### Breaking Changes
 - rewritten with React Hooks (dropped support for React < 16.8.0)

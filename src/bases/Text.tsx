@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
-export const Base = styled.p`
-  text-shadow: ${({ layers }: { layers: string }) => layers};
+import { Depth } from '../types';
 
-  ${({ depth: { x, y } }: any) => `
-    margin-left: ${-x}px;
-    margin-top: ${-y}px;
+type Props = {
+  layers: string;
+  depth: Depth;
+};
+
+export const Base = styled.p<Props>`
+  ${({ layers, depth }) => `
+    text-shadow: ${layers};
+    margin-left: ${-depth.x}px;
+    margin-top: ${-depth.y}px;
   `}
 `;

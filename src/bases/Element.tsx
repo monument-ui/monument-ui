@@ -1,34 +1,41 @@
 import styled from 'styled-components';
 
+import { Depth } from '../types';
+
 const onClick = `
   transform: translate(0, 0);
   box-shadow: 0 0 0 0 #0000;
 `;
 
-export const Base = styled.div`
-  will-change: transform;
-  box-shadow: ${({ layers }: { layers: string }) => layers};
+type Props = {
+  layers: string;
+  depth: Depth;
+  animate: boolean;
+  clickable: boolean;
+};
 
-  ${({ depth: { x, y } }: any) => `
-    transform: translate(${-x}px, ${-y}px);
-  `}
+export const Base = styled.div<Props>`
+  ${({ depth, layers, animate, clickable }) => `
+    will-change: transform;
+    box-shadow: ${layers};
+    transform: translate(${-depth.x}px, ${-depth.y}px);
+    
+    ${animate ? `transition: transform 300ms ease, box-shadow 300ms ease;` : ``}
+    
+    ${
+      clickable
+        ? `
+    &:focus,
+    &:active {
+      ${onClick}
+    }
 
-  ${({ animate }: { animate: boolean }) =>
-    animate ? `transition: transform 300ms ease, box-shadow 300ms ease;` : ``}
-
-  ${({ clickable }: { clickable: boolean }) =>
-    clickable
-      ? `
-      &:focus,
-      &:active {
+    @media not all and (hover: hover) {
+      &:hover {
         ${onClick}
       }
-
-      @media not all and (hover: hover) {
-        &:hover {
-          ${onClick}
-        }
-      }
-      `
-      : ``}
+    }`
+        : ``
+    }
+ `}
 `;

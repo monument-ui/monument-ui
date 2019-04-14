@@ -16,12 +16,12 @@ export const Element = ({
   clickable = false,
   ...props
 }: Props & Events): JSX.Element => {
-  const el = useRef<HTMLElement>(null);
+  const el = useRef<HTMLDivElement>(null);
 
   const [layers, setLayers] = useState<string>('');
   const [animate, setAnimate] = useState<boolean>(false);
   const [clickEvent, setClickEvent] = useState<boolean>(false);
-  const [mode, setMode] = useState<string>(null);
+  const [mode, setMode] = useState<string | null>(null);
 
   const [depth, setDepth] = useState<Depth>({
     x: convertUnits(perspective.x),
@@ -47,8 +47,8 @@ export const Element = ({
       if (mode) setAnimate(true);
 
       const max: { x: number; y: number } = {
-        x: el.current.offsetWidth / 10,
-        y: el.current.offsetHeight / 10
+        x: el.current!.offsetWidth / 10,
+        y: el.current!.offsetHeight / 10
       };
 
       const axis: { x: number; y: number } = setMax(max, { x, y });
