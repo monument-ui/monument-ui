@@ -21,11 +21,12 @@ export const Element = ({
   const [layers, setLayers] = useState<string>('');
   const [animate, setAnimate] = useState<boolean>(false);
   const [clickEvent, setClickEvent] = useState<boolean>(false);
+  const [mode, setMode] = useState<string>(null);
+
   const [depth, setDepth] = useState<Depth>({
     x: convertUnits(perspective.x),
     y: convertUnits(perspective.y)
   });
-  const [mode, setMode] = useState<string>(null);
 
   useEffect(() => {
     const generateLayers = (): void => {
@@ -77,6 +78,7 @@ export const Element = ({
     generateLayers();
 
     window.addEventListener('resize', () => generateLayers());
+    window.removeEventListener('resize', () => generateLayers());
   }, [
     clickable,
     color,

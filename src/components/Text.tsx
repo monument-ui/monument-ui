@@ -37,6 +37,7 @@ export const Text = ({
     generateLayers();
 
     window.addEventListener('resize', () => generateLayers());
+    window.removeEventListener('resize', () => generateLayers());
   }, [color, colorify, depth.x, depth.y, shadow]);
 
   return <Base layers={layers} depth={depth} {...props} />;
