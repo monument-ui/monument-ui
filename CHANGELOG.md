@@ -1,5 +1,9 @@
 # Monument UI Changelog
 
+## 1.0.0 beta 2 (2019-04-15)
+#### Bug Fix
+- fixed viewport sizes on resize
+
 ## 1.0.0 beta 1 (2019-04-14)
 #### Bug Fix
 - fixed hoverable
