@@ -12,8 +12,8 @@ export const Element = ({
   shadow = '',
   colorify = false,
   perspective = { x: 5, y: 5 },
-  hoverable,
   clickable,
+  hoverable,
   touchable,
   ...props
 }: Props & Events): JSX.Element => {

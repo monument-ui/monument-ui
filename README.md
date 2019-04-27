@@ -30,20 +30,21 @@ import { Element, Text } from 'monument-ui';
 ```js
 <Element
   as={ /* component or DOM element */ }
-  perspective={ /* x, y */ }
   color={ /* color value */ }
   shadow={ /* shadow value */ }
   colorify={ /* true / false */ }
-  hoverable={ /* true / false */ }
-  clickable={ /* true / false */ }
+  perspective={ /* x, y */ }
+  clickable={ /* 'push' / 'pull' */ }
+  hoverable={ /* 'pull' / 'push' */ }
+  touchable={ /* 'push' / 'pull' */ }
 />
 
 <Text
   as={ /* component or DOM element */ }
-  perspective={ /* x, y */ }
   color={ /* color value */ }
   shadow={ /* shadow value */ }
   colorify={ /* true / false */ }
+  perspective={ /* x, y */ }
 />
 ```
 
@@ -51,20 +52,21 @@ import { Element, Text } from 'monument-ui';
 ### Element component
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-**perspective** | object | `{ x: 5, y: 5 }` | Horizontal and vertical depth length | Object with `x` and `y` values
-**color** | string | `#444` | Color of depth effect | Color value in hex, rgb(a) etc.
+**color** | string | ` ` | Color of depth effect | Color value in hex, rgb(a) etc.
 **shadow** | string | ` ` | Shadow added to element | e.g.: `10px 10px 20px #222a`
 **colorify** | boolean | `false` | Change color for each layer | Enable `true` / disable `false`
-**hoverable** | boolean | `false` | Add layers on hover (only desktop) | Enable `true` / disable `false`
-**clickable** | boolean | `false` | Push element on click | Enable `true` / disable `false`
+**perspective** | object | `{ x: 5, y: 5 }` | Horizontal and vertical depth length | Object with `x` and `y` values
+**clickable** | string | `undefined` | Action for element on click (only desktop) | 'push' (move down), 'pull' (move up)
+**hoverable** | string | `undefined` | Action for element on hover (only desktop) | 'pull' (move up), 'push' (move down)
+**touchable** | string | `undefined` | Action for element on touch (only mobile) | 'push' (move down), 'pull' (move up)
 
 ### Text component
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-**perspective** | object | `{ x: 5, y: 5 }` | Horizontal and vertical depth length | Object with `x` and `y` values
-**color** | string | `#ccc` | Color of depth effect | Color value in hex, rgb(a) etc.
+**color** | string | ` ` | Color of depth effect | Color value in hex, rgb(a) etc.
 **shadow** | string | ` ` | Shadow added to text | e.g.: `10px 10px 20px #222a`
 **colorify** | boolean | `false` | Change color for each layer | Enable `true` / disable `false`
+**perspective** | object | `{ x: 5, y: 5 }` | Horizontal and vertical depth length | Object with `x` and `y` values
 
 ## Example
 ```js
@@ -74,7 +76,7 @@ export default function App() {
   return (
     <Element
       as="button"
-      clickable
+      clickable="push"
       color="#f00"
       perspective={{ x: 10, y: '-5em' }}
       style={{ /* style */ }}

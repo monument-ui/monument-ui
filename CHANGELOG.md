@@ -1,5 +1,16 @@
 # Monument UI Changelog
 
+## 1.0.0 beta 3 / 1.0.0 beta 4 (2019-04-27)
+#### Breaking Changes
+- changed `clickable` & `hoverable` props possible values
+- removed default color values
+
+#### New Feature
+- added `touchable` prop
+
+#### Bug Fix
+- fixed hover inactivity on first mouseover
+
 ## 1.0.0 beta 2 (2019-04-15)
 #### Bug Fix
 - fixed viewport sizes on resize
