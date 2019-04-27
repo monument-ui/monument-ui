@@ -2,7 +2,7 @@
 
 ## 1.0.0 beta 3 / 1.0.0 beta 4 (2019-04-27)
 #### Breaking Changes
-- changed `clickable` & `hoverable` props possible values
+- changed `clickable` & `hoverable` possible props values
 - removed default color values
 
 #### New Feature
