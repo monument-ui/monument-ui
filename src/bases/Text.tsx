@@ -1,16 +1,10 @@
 import styled from 'styled-components';
 
-import { Depth } from '../types';
+import { TextBase } from '../interfaces';
 
-type Props = {
-  layers: string;
-  depth: Depth;
-};
-
-export const Base = styled.p<Props>`
-  ${({ layers, depth }) => `
+export const Base = styled.p<TextBase>`
+  ${({ depth, layers }) => `
+    transform: translate3d(${-depth.x / 2}px, ${-depth.y / 2}px, 0);
     text-shadow: ${layers};
-    margin-left: ${-depth.x}px;
-    margin-top: ${-depth.y}px;
   `}
 `;

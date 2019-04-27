@@ -1,27 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import { Props } from '../interfaces';
-import { Events, Depth } from '../types';
+import { Events, Actions, Depth } from '../types';
 
 import { Base } from '../bases/Element';
 
-import { convertUnits, countLevels, setMax } from '../helpers';
+import { convertUnits, countLevels } from '../helpers';
 
 export const Element = ({
-  perspective = { x: 5, y: 5 },
-  color = '#444',
+  color,
   shadow = '',
   colorify = false,
-  hoverable = false,
-  clickable = false,
+  perspective = { x: 5, y: 5 },
+  hoverable,
+  clickable,
+  touchable,
   ...props
 }: Props & Events): JSX.Element => {
   const el = useRef<HTMLDivElement>(null);
 
   const [layers, setLayers] = useState<string>('');
   const [animate, setAnimate] = useState<boolean>(false);
-  const [clickEvent, setClickEvent] = useState<boolean>(false);
   const [mode, setMode] = useState<string | null>(null);
+
+  const [clickEvent, setClickEvent] = useState<Actions>();
+  const [touchEvent, setTouchEvent] = useState<Actions>();
+  const [hoverEvent, setHoverEvent] = useState<Actions>();
 
   const [depth, setDepth] = useState<Depth>({
     x: convertUnits(perspective.x),
@@ -36,7 +40,11 @@ export const Element = ({
       let extraX: number;
       let extraY: number;
 
-      if (mode === 'mouseenter' && hoverable) {
+      if (
+        (mode === 'mousedown' && clickable === 'pull') ||
+        (mode === 'mouseenter' && hoverable === 'pull') ||
+        (mode === 'touchstart' && touchable === 'pull')
+      ) {
         extraX = x > 0 ? x / 2 : x < 0 ? -x / 2 : 0;
         extraY = y > 0 ? y / 2 : y < 0 ? -y / 2 : 0;
       } else {
@@ -44,14 +52,9 @@ export const Element = ({
         extraY = 0;
       }
 
-      if (mode) setAnimate(true);
+      if (layers) setAnimate(true);
 
-      const max: { x: number; y: number } = {
-        x: el.current!.offsetWidth / 10,
-        y: el.current!.offsetHeight / 10
-      };
-
-      const axis: { x: number; y: number } = setMax(max, { x, y });
+      const axis: { x: number; y: number } = { x, y };
 
       axis.x = Math.round(
         axis.x > 0 ? axis.x + extraX : axis.x < 0 ? axis.x - extraX : axis.x
@@ -61,21 +64,39 @@ export const Element = ({
         axis.y > 0 ? axis.y + extraY : axis.y < 0 ? axis.y - extraY : axis.y
       );
 
-      setLayers(
-        countLevels({
-          x: axis.x,
-          y: axis.y,
-          color,
-          shadow,
-          colorify
-        })
-      );
+      const levels = countLevels({
+        x: axis.x,
+        y: axis.y,
+        color,
+        shadow,
+        colorify
+      });
 
-      setDepth({ x: axis.x, y: axis.y });
-      setClickEvent(clickable);
+      setLayers(levels);
+
+      setDepth({
+        x: axis.x,
+        y: axis.y
+      });
+
+      if ('ontouchstart' in window) {
+        setTouchEvent(touchable);
+      } else {
+        setClickEvent(clickable);
+        setHoverEvent(hoverable);
+      }
     };
 
     generateLayers();
+
+    el.current!.addEventListener('mousedown', () => setMode('mousedown'));
+    el.current!.addEventListener('mouseup', () => setMode(null));
+
+    el.current!.addEventListener('mouseenter', () => setMode('mouseenter'));
+    el.current!.addEventListener('mouseleave', () => setMode(null));
+
+    el.current!.addEventListener('touchstart', () => setMode('touchstart'));
+    el.current!.addEventListener('touchend', () => setMode(null));
 
     window.addEventListener('resize', () => generateLayers());
     window.removeEventListener('resize', () => generateLayers());
@@ -84,21 +105,23 @@ export const Element = ({
     color,
     colorify,
     hoverable,
+    layers,
     mode,
     perspective.x,
     perspective.y,
-    shadow
+    shadow,
+    touchable
   ]);
 
   return (
     <Base
       ref={el}
-      onMouseEnter={() => setMode('mouseenter')}
-      onMouseLeave={() => setMode(null)}
-      layers={layers}
       depth={depth}
+      layers={layers}
       animate={animate}
       clickable={clickEvent}
+      hoverable={hoverEvent}
+      touchable={touchEvent}
       {...props}
     />
   );

@@ -1,40 +1,50 @@
 import styled from 'styled-components';
 
-import { Depth } from '../types';
+import { ElementBase } from '../interfaces';
 
-const onClick = `
-  transform: translate(0, 0);
+const pushed = `
+  transform: translate3d(0, 0, 0);
   box-shadow: 0 0 0 0 #0000;
 `;
-
-type Props = {
-  layers: string;
-  depth: Depth;
-  animate: boolean;
-  clickable: boolean;
-};
-
-export const Base = styled.div<Props>`
-  ${({ depth, layers, animate, clickable }) => `
+export const Base = styled.div<ElementBase>`
+  ${({ depth, layers, animate, clickable, hoverable, touchable }) => `
+    transform: translate3d(${-depth.x}px, ${-depth.y}px, 0);
     will-change: transform;
     box-shadow: ${layers};
-    transform: translate(${-depth.x}px, ${-depth.y}px);
-    
+
     ${animate ? `transition: transform 300ms ease, box-shadow 300ms ease;` : ``}
     
     ${
-      clickable
+      clickable === 'push'
         ? `
-    &:focus,
-    &:active {
-      ${onClick}
+      &:focus,
+      &:active {
+        ${pushed}
+      }
+
+      @media not all and (hover: hover) {
+        &:hover {
+          ${pushed}
+        }
+      }`
+        : ``
     }
 
-    @media not all and (hover: hover) {
+    ${
+      hoverable === 'push'
+        ? `
+      &:hover:not(:focus) {
+        ${pushed}
+      }`
+        : ``
+    }
+
+    ${
+      touchable === 'push'
+        ? `
       &:hover {
-        ${onClick}
-      }
-    }`
+        ${pushed}
+      }`
         : ``
     }
  `}

@@ -8,10 +8,10 @@ import { Depth } from '../types';
 import { convertUnits, countLevels } from '../helpers';
 
 export const Text = ({
-  color = '#ccc',
+  color,
+  shadow = '',
   colorify = false,
   perspective = { x: 5, y: 5 },
-  shadow = '',
   ...props
 }: Props): JSX.Element => {
   const [layers, setLayers] = useState<string>('');
@@ -23,15 +23,15 @@ export const Text = ({
 
   useEffect(() => {
     const generateLayers = (): void => {
-      setLayers(
-        countLevels({
-          x: convertUnits(perspective.x),
-          y: convertUnits(perspective.y),
-          color,
-          shadow,
-          colorify
-        })
-      );
+      const levels = countLevels({
+        x: convertUnits(perspective.x),
+        y: convertUnits(perspective.y),
+        color,
+        shadow,
+        colorify
+      });
+
+      setLayers(levels);
     };
 
     generateLayers();
@@ -40,5 +40,5 @@ export const Text = ({
     window.removeEventListener('resize', () => generateLayers());
   }, [color, colorify, perspective.x, perspective.y, shadow]);
 
-  return <Base layers={layers} depth={depth} {...props} />;
+  return <Base depth={depth} layers={layers} {...props} />;
 };
