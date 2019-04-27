@@ -24,8 +24,8 @@ export const Element = ({
   const [mode, setMode] = useState<string | null>(null);
 
   const [clickEvent, setClickEvent] = useState<Actions>();
-  const [touchEvent, setTouchEvent] = useState<Actions>();
   const [hoverEvent, setHoverEvent] = useState<Actions>();
+  const [touchEvent, setTouchEvent] = useState<Actions>();
 
   const [depth, setDepth] = useState<Depth>({
     x: convertUnits(perspective.x),
@@ -51,8 +51,6 @@ export const Element = ({
         extraX = 0;
         extraY = 0;
       }
-
-      if (layers) setAnimate(true);
 
       const axis: { x: number; y: number } = { x, y };
 
@@ -105,13 +103,16 @@ export const Element = ({
     color,
     colorify,
     hoverable,
-    layers,
     mode,
     perspective.x,
     perspective.y,
     shadow,
     touchable
   ]);
+
+  useEffect(() => {
+    if (mode) setAnimate(true);
+  }, [mode]);
 
   return (
     <Base

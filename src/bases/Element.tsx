@@ -11,41 +11,29 @@ export const Base = styled.div<ElementBase>`
     transform: translate3d(${-depth.x}px, ${-depth.y}px, 0);
     will-change: transform;
     box-shadow: ${layers};
-
-    ${animate ? `transition: transform 300ms ease, box-shadow 300ms ease;` : ``}
     
-    ${
-      clickable === 'push'
-        ? `
+  ${animate && `transition: transform 300ms ease, box-shadow 300ms ease;`}
+
+    ${clickable === 'push' &&
+      `
       &:focus,
       &:active {
         ${pushed}
       }
+    `}
 
-      @media not all and (hover: hover) {
-        &:hover {
-          ${pushed}
-        }
-      }`
-        : ``
-    }
-
-    ${
-      hoverable === 'push'
-        ? `
+    ${hoverable === 'push' &&
+      `
       &:hover:not(:focus) {
         ${pushed}
-      }`
-        : ``
-    }
+      }
+    `}
 
-    ${
-      touchable === 'push'
-        ? `
+    ${touchable === 'push' &&
+      `
       &:hover {
         ${pushed}
-      }`
-        : ``
-    }
+      }
+    `}
  `}
 `;
