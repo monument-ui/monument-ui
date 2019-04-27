@@ -1,5 +1,9 @@
 # Monument UI Changelog
 
+## 1.0.0 beta 5 (2019-04-28)
+#### Bug Fix
+- removed animation on element init
+
 ## 1.0.0 beta 3 / 1.0.0 beta 4 (2019-04-27)
 #### Breaking Changes
 - changed `clickable` & `hoverable` possible props values

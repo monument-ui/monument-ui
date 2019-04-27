@@ -21,7 +21,6 @@ export const Element = ({
 
   const [layers, setLayers] = useState<string>('');
   const [animate, setAnimate] = useState<boolean>(false);
-  const [mode, setMode] = useState<string | null>(null);
 
   const [clickEvent, setClickEvent] = useState<Actions>();
   const [hoverEvent, setHoverEvent] = useState<Actions>();
@@ -41,9 +40,9 @@ export const Element = ({
       let extraY: number;
 
       if (
-        (mode === 'mousedown' && clickable === 'pull') ||
-        (mode === 'mouseenter' && hoverable === 'pull') ||
-        (mode === 'touchstart' && touchable === 'pull')
+        (clickEvent && clickable === 'pull') ||
+        (hoverEvent && hoverable === 'pull') ||
+        (touchEvent && touchable === 'pull')
       ) {
         extraX = x > 0 ? x / 2 : x < 0 ? -x / 2 : 0;
         extraY = y > 0 ? y / 2 : y < 0 ? -y / 2 : 0;
@@ -53,6 +52,8 @@ export const Element = ({
       }
 
       const axis: { x: number; y: number } = { x, y };
+
+      if (clickEvent || hoverEvent || touchEvent) setAnimate(true);
 
       axis.x = Math.round(
         axis.x > 0 ? axis.x + extraX : axis.x < 0 ? axis.x - extraX : axis.x
@@ -76,43 +77,35 @@ export const Element = ({
         x: axis.x,
         y: axis.y
       });
-
-      if ('ontouchstart' in window) {
-        setTouchEvent(touchable);
-      } else {
-        setClickEvent(clickable);
-        setHoverEvent(hoverable);
-      }
     };
 
     generateLayers();
 
-    el.current!.addEventListener('mousedown', () => setMode('mousedown'));
-    el.current!.addEventListener('mouseup', () => setMode(null));
+    el.current!.addEventListener('mousedown', () => setClickEvent(clickable));
+    el.current!.addEventListener('mouseup', () => setClickEvent(undefined));
 
-    el.current!.addEventListener('mouseenter', () => setMode('mouseenter'));
-    el.current!.addEventListener('mouseleave', () => setMode(null));
+    el.current!.addEventListener('mouseenter', () => setHoverEvent(hoverable));
+    el.current!.addEventListener('mouseleave', () => setHoverEvent(undefined));
 
-    el.current!.addEventListener('touchstart', () => setMode('touchstart'));
-    el.current!.addEventListener('touchend', () => setMode(null));
+    el.current!.addEventListener('touchstart', () => setTouchEvent(touchable));
+    el.current!.addEventListener('touchend', () => setTouchEvent(undefined));
 
     window.addEventListener('resize', () => generateLayers());
     window.removeEventListener('resize', () => generateLayers());
   }, [
+    clickEvent,
     clickable,
     color,
     colorify,
+    layers,
+    hoverEvent,
     hoverable,
-    mode,
     perspective.x,
     perspective.y,
     shadow,
-    touchable
+    touchable,
+    touchEvent
   ]);
-
-  useEffect(() => {
-    if (mode) setAnimate(true);
-  }, [mode]);
 
   return (
     <Base
