@@ -28,8 +28,8 @@ module.exports = env => {
       rules: [
         {
           test: /\.tsx?$/,
-          loader: ['ts-loader'],
-          exclude: [/node_modules/],
+          loader: 'ts-loader',
+          exclude: /node_modules/,
           resolve: {
             extensions: ['.tsx']
           }
