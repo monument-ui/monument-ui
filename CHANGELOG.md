@@ -1,6 +1,6 @@
 # Monument UI Changelog
 
-## 1.0.0 beta 5 (2019-04-28)
+## 1.0.0 beta 5 / 1.0.0 (2019-04-28)
 #### Bug Fix
 - removed animation on element init
 

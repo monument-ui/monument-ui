@@ -87,7 +87,10 @@ export const Element = ({
     el.current!.addEventListener('mouseenter', () => setHoverEvent(hoverable));
     el.current!.addEventListener('mouseleave', () => setHoverEvent(undefined));
 
-    el.current!.addEventListener('touchstart', () => setTouchEvent(touchable));
+    el.current!.addEventListener('touchstart', () => setTouchEvent(touchable), {
+      passive: true
+    });
+
     el.current!.addEventListener('touchend', () => setTouchEvent(undefined));
 
     window.addEventListener('resize', () => generateLayers());
