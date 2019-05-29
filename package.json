@@ -1,6 +1,6 @@
 {
   "name": "monument-ui",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Add 3D effect to React elements",
   "author": "Jakub Biesiada",
   "license": "MIT",

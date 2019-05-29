@@ -1,5 +1,10 @@
 # Monument UI Changelog
 
+## 1.0.1 / 1.0.2 (2019-05-29)
+#### Repository Changes
+- added `husky`
+- updated `typescript`
+
 ## 1.0.0 beta 5 / 1.0.0 (2019-04-28)
 #### Bug Fix
 - removed animation on element init
