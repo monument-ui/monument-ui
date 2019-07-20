@@ -1,5 +1,9 @@
 # Monument UI Changelog
 
+## 1.1.0 beta 1 (2019-07-21)
+#### Repository Changes
+- added type definitions to output files
+
 ## 1.0.1 / 1.0.2 (2019-05-29)
 #### Repository Changes
 - added `husky`
