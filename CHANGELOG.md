@@ -1,6 +1,10 @@
 # Monument UI Changelog
 
-## 1.1.0 beta 1 (2019-07-21)
+## 1.1.0 beta 2 / 1.1.0 beta 2.1 / 1.1.0 (2019-08-05)
+#### Bug Fix
+- fixed incorrect props types
+
+## 1.1.0 beta 1 / 1.1.0 beta 1.1 / 1.1.0 beta 1.2 (2019-07-21)
 #### Repository Changes
 - added type definitions to output files
 

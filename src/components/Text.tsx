@@ -3,7 +3,7 @@ import React, { useState, useEffect, ReactElement } from 'react';
 import { Base } from '../bases/Text';
 
 import { Props } from '../interfaces';
-import { Depth } from '../types';
+import { Children, Depth } from '../types';
 
 import { convertUnits, countLevels } from '../helpers';
 
@@ -14,7 +14,7 @@ export const Text = ({
   perspective = { x: 5, y: 5 },
   children,
   ...props
-}: Props): ReactElement => {
+}: Props & { children: Children }): ReactElement => {
   const [layers, setLayers] = useState<string>('');
 
   const depth: Depth = {
