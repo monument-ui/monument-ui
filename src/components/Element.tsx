@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react';
 
 import { Props } from '../interfaces';
-import { Events, Actions, Depth } from '../types';
+import { Events, Children, Actions, Depth } from '../types';
 
 import { Base } from '../bases/Element';
 
@@ -17,7 +17,7 @@ export const Element = ({
   touchable,
   children,
   ...props
-}: Props & Events): ReactElement => {
+}: Props & Events & { children?: Children }): ReactElement => {
   const el = useRef<HTMLDivElement>(null);
 
   const [layers, setLayers] = useState<string>('');

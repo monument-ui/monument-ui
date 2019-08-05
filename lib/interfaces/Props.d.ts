@@ -4,4 +4,5 @@ export default interface Props {
     readonly color: string;
     readonly shadow?: string;
     readonly colorify?: boolean;
+    readonly [key: string]: any;
 }
