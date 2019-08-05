@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ReactElement } from 'react';
 
 import { Props } from '../interfaces';
 import { Events, Actions, Depth } from '../types';
@@ -15,8 +15,9 @@ export const Element = ({
   clickable,
   hoverable,
   touchable,
+  children,
   ...props
-}: Props & Events): JSX.Element => {
+}: Props & Events): ReactElement => {
   const el = useRef<HTMLDivElement>(null);
 
   const [layers, setLayers] = useState<string>('');
@@ -32,7 +33,7 @@ export const Element = ({
   });
 
   useEffect(() => {
-    const generateLayers = (): void => {
+    const generateLayers = () => {
       let x: number = convertUnits(perspective.x);
       let y: number = convertUnits(perspective.y);
 
@@ -93,8 +94,8 @@ export const Element = ({
 
     el.current!.addEventListener('touchend', () => setTouchEvent(undefined));
 
-    window.addEventListener('resize', () => generateLayers());
-    window.removeEventListener('resize', () => generateLayers());
+    window.addEventListener('resize', generateLayers);
+    window.removeEventListener('resize', generateLayers);
   }, [
     clickEvent,
     clickable,
@@ -120,6 +121,8 @@ export const Element = ({
       hoverable={hoverEvent}
       touchable={touchEvent}
       {...props}
-    />
+    >
+      {children}
+    </Base>
   );
 };

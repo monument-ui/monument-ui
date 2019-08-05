@@ -1,3 +1,5 @@
+import { ReactChild } from 'react';
+
 import { Depth, Actions } from '../types';
 
 export default interface Element {
@@ -7,4 +9,5 @@ export default interface Element {
   readonly clickable?: Actions;
   readonly hoverable?: Actions;
   readonly touchable?: Actions;
+  readonly children?: ReactChild | ReactChild[];
 }

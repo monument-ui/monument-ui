@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 
 import { Base } from '../bases/Text';
 
@@ -12,8 +12,9 @@ export const Text = ({
   shadow = '',
   colorify = false,
   perspective = { x: 5, y: 5 },
+  children,
   ...props
-}: Props): JSX.Element => {
+}: Props): ReactElement => {
   const [layers, setLayers] = useState<string>('');
 
   const depth: Depth = {
@@ -22,7 +23,7 @@ export const Text = ({
   };
 
   useEffect(() => {
-    const generateLayers = (): void => {
+    const generateLayers = () => {
       const levels = countLevels({
         x: convertUnits(perspective.x),
         y: convertUnits(perspective.y),
@@ -36,9 +37,13 @@ export const Text = ({
 
     generateLayers();
 
-    window.addEventListener('resize', () => generateLayers());
-    window.removeEventListener('resize', () => generateLayers());
+    window.addEventListener('resize', generateLayers);
+    window.removeEventListener('resize', generateLayers);
   }, [color, colorify, perspective.x, perspective.y, shadow]);
 
-  return <Base depth={depth} layers={layers} {...props} />;
+  return (
+    <Base depth={depth} layers={layers} {...props}>
+      {children}
+    </Base>
+  );
 };
