@@ -1,9 +1,7 @@
-import { ReactChild } from 'react';
-
-import { Depth } from '../types';
+import { Depth, Children } from '../types';
 
 export default interface Text {
   readonly depth: Depth;
   readonly layers: string;
-  readonly children: ReactChild | ReactChild[];
+  readonly children: Children;
 }
