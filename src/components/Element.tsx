@@ -20,8 +20,8 @@ export const Element = ({
 }: Props & Events & { children?: Children }): ReactElement => {
   const el = useRef<HTMLDivElement>(null);
 
-  const [layers, setLayers] = useState<string>('');
-  const [animate, setAnimate] = useState<boolean>(false);
+  const [layers, setLayers] = useState('');
+  const [animate, setAnimate] = useState(false);
 
   const [clickEvent, setClickEvent] = useState<Actions>();
   const [hoverEvent, setHoverEvent] = useState<Actions>();
@@ -34,8 +34,8 @@ export const Element = ({
 
   useEffect(() => {
     const generateLayers = () => {
-      let x: number = convertUnits(perspective.x);
-      let y: number = convertUnits(perspective.y);
+      let x = convertUnits(perspective.x);
+      let y = convertUnits(perspective.y);
 
       let extraX: number;
       let extraY: number;
@@ -52,7 +52,7 @@ export const Element = ({
         extraY = 0;
       }
 
-      const axis: { x: number; y: number } = { x, y };
+      const axis = { x, y };
 
       if (clickEvent || hoverEvent || touchEvent) setAnimate(true);
 

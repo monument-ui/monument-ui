@@ -15,7 +15,7 @@ export const Text = ({
   children,
   ...props
 }: Props & { children: Children }): ReactElement => {
-  const [layers, setLayers] = useState<string>('');
+  const [layers, setLayers] = useState('');
 
   const depth: Depth = {
     x: convertUnits(perspective.x),

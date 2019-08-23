@@ -2,29 +2,23 @@ import { setColors } from './setColors';
 
 import { Levels } from '../interfaces';
 
-export const countLevels = ({
-  x,
-  y,
-  color,
-  shadow,
-  colorify
-}: Levels): string => {
+export const countLevels = ({ x, y, color, shadow, colorify }: Levels) => {
   const abs = (value: number) => Math.abs(value);
 
-  const [master, slave]: [number, number] = abs(x) > abs(y) ? [x, y] : [y, x];
+  const [master, slave] = abs(x) > abs(y) ? [x, y] : [y, x];
 
-  const slaveDifference: number = abs(slave) / abs(master);
+  const slaveDifference = abs(slave) / abs(master);
 
   const depth: string[] = [];
 
-  let slaveDepth: number = 0;
+  let slaveDepth = 0;
 
   for (let masterDepth = 1; masterDepth <= abs(master); masterDepth++) {
     slaveDepth += slaveDifference;
 
     if (colorify) color = setColors(color, abs(master));
 
-    let [horizontal, vertical]: [number, number] =
+    let [horizontal, vertical] =
       abs(x) > abs(y) ? [masterDepth, slaveDepth] : [slaveDepth, masterDepth];
 
     depth.push(

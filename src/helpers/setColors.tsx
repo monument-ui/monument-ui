@@ -1,6 +1,6 @@
 import Color from 'color';
 
-export const setColors = (color: string, levels: number): string => {
+export const setColors = (color: string, levels: number) => {
   return Color(color).isDark()
     ? Color(color)
         .lighten(1 / (levels * 5))
