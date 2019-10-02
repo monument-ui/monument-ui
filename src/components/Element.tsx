@@ -113,6 +113,7 @@ export const Element = ({
 
   return (
     <Base
+      {...props}
       ref={el}
       depth={depth}
       layers={layers}
@@ -120,7 +121,6 @@ export const Element = ({
       clickable={clickEvent}
       hoverable={hoverEvent}
       touchable={touchEvent}
-      {...props}
     >
       {children}
     </Base>

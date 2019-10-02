@@ -42,7 +42,7 @@ export const Text = ({
   }, [color, colorify, perspective.x, perspective.y, shadow]);
 
   return (
-    <Base depth={depth} layers={layers} {...props}>
+    <Base {...props} depth={depth} layers={layers}>
       {children}
     </Base>
   );
