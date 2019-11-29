@@ -1,1 +1,1 @@
-export declare const setColors: (color: string, levels: number) => string;
+export declare const setColors: (item: string, levels: number) => string;
