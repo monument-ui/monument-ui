@@ -12,8 +12,8 @@
     "build:dev": "webpack --env dev",
     "watch": "npm run build -- --watch",
     "watch:dev": "npm run build:dev -- --watch",
-    "lint": "eslint 'src/**/*.tsx' --fix",
-    "prettier": "prettier --write 'src/**/*.tsx'",
+    "lint": "eslint 'src/**/*.{tsx,ts}' --fix",
+    "prettier": "prettier --write 'src/**/*.{tsx,ts}'",
     "deploy": "gh-pages -d demo/build"
   },
   "repository": {
@@ -61,6 +61,6 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{tsx}": ["npm run prettier", "npm run lint", "git add"]
+    "src/**/*.{tsx,ts}": ["npm run prettier", "npm run lint", "git add"]
   }
 }

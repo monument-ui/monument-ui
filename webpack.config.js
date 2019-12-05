@@ -15,7 +15,7 @@ module.exports = env => {
 
   return {
     mode,
-    entry: `${__dirname}/src/index.tsx`,
+    entry: `${__dirname}/src/index.ts`,
     externals: ['color', 'react', 'react-dom', 'styled-components', 'to-px'],
     devtool,
     output: {
@@ -31,7 +31,7 @@ module.exports = env => {
           loader: 'ts-loader',
           exclude: /node_modules/,
           resolve: {
-            extensions: ['.tsx']
+            extensions: ['.tsx', '.ts']
           }
         }
       ]
