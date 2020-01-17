@@ -1,5 +1,7 @@
 src
-demo
+stories
+storybook-static
+.storybook
 
 tsconfig.json
 .travis.yml
