@@ -1,5 +1,10 @@
 # Monument UI Changelog
 
+## 1.1.1 (2020-01-23)
+#### Repository Changes
+- replaced `Webpack` with `Rollup`
+- added module output
+
 ## 1.1.0 beta 2 / 1.1.0 beta 2.1 / 1.1.0 (2019-08-05)
 #### Bug Fix
 - fixed incorrect props types
