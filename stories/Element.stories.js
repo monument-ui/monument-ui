@@ -30,7 +30,7 @@ export default {
 export const normal = () => (
   <Element
     style={{
-      backgroundColor: color('Text Color', 'rgb(249, 136, 14)'),
+      backgroundColor: color('Element Color', 'rgb(249, 136, 14)'),
       margin: '0 auto',
       width: 300,
       height: 300,
