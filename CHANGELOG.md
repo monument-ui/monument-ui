@@ -4,6 +4,7 @@
 #### Repository Changes
 - replaced `Webpack` with `Rollup`
 - added module output
+- replaced demo with `Storybook`
 
 ## 1.1.0 beta 2 / 1.1.0 beta 2.1 / 1.1.0 (2019-08-05)
 #### Bug Fix
