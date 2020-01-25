@@ -1,11 +1,14 @@
 src
-demo
+stories
+storybook-static
+.storybook
 
 tsconfig.json
 .travis.yml
 .prettierrc
 
 .eslintrc.js
-/index.d.ts
-webpack.config.js
+global.d.ts
+rollup.config.js
 yarn-error.log
+.rpt2_cache

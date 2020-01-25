@@ -56,9 +56,9 @@ Name | Type | Default | Description | Available options
 **shadow** | string | ` ` | Shadow added to element | e.g.: `10px 10px 20px #222a`
 **colorify** | boolean | `false` | Change color for each layer | Enable `true` / disable `false`
 **perspective** | object | `{ x: 5, y: 5 }` | Horizontal and vertical depth length | Object with `x` and `y` values
-**clickable** | string | `undefined` | Action for element on click (only desktop) | 'push' (move down), 'pull' (move up)
-**hoverable** | string | `undefined` | Action for element on hover (only desktop) | 'pull' (move up), 'push' (move down)
-**touchable** | string | `undefined` | Action for element on touch (only mobile) | 'push' (move down), 'pull' (move up)
+**clickable** | string | `undefined` | Action for element on click (only desktop) | `push` (move down), `pull` (move up)
+**hoverable** | string | `undefined` | Action for element on hover (only desktop) | `pull` (move up), `push` (move down)
+**touchable** | string | `undefined` | Action for element on touch (only mobile) | `push` (move down), `pull` (move up)
 
 ### Text component
 Name | Type | Default | Description | Available options
