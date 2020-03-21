@@ -19,7 +19,7 @@ export const Text = ({
 
   const depth: Depth = {
     x: convertUnits(perspective.x),
-    y: convertUnits(perspective.y)
+    y: convertUnits(perspective.y),
   };
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const Text = ({
         y: convertUnits(perspective.y),
         color,
         shadow,
-        colorify
+        colorify,
       });
 
       setLayers(levels);

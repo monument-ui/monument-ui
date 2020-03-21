@@ -29,7 +29,7 @@ export const Element = ({
 
   const [depth, setDepth] = useState<Depth>({
     x: convertUnits(perspective.x),
-    y: convertUnits(perspective.y)
+    y: convertUnits(perspective.y),
   });
 
   useEffect(() => {
@@ -69,14 +69,14 @@ export const Element = ({
         y: axis.y,
         color,
         shadow,
-        colorify
+        colorify,
       });
 
       setLayers(levels);
 
       setDepth({
         x: axis.x,
-        y: axis.y
+        y: axis.y,
       });
     };
 
@@ -89,7 +89,7 @@ export const Element = ({
     el.current!.addEventListener('mouseleave', () => setHoverEvent(undefined));
 
     el.current!.addEventListener('touchstart', () => setTouchEvent(touchable), {
-      passive: true
+      passive: true,
     });
 
     el.current!.addEventListener('touchend', () => setTouchEvent(undefined));
@@ -108,7 +108,7 @@ export const Element = ({
     perspective.y,
     shadow,
     touchable,
-    touchEvent
+    touchEvent,
   ]);
 
   return (
