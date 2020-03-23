@@ -1,4 +1,4 @@
-import { Depth, Actions, Children } from '../types';
+import { Depth, Actions } from '../types';
 export default interface Element {
     readonly depth: Depth;
     readonly layers: string;
@@ -6,5 +6,4 @@ export default interface Element {
     readonly clickable?: Actions;
     readonly hoverable?: Actions;
     readonly touchable?: Actions;
-    readonly children?: Children;
 }

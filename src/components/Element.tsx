@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { Props } from '../interfaces';
-import { Events, Children, Actions, Depth } from '../types';
+import { Events, Actions, Depth } from '../types';
 
 import { Base } from '../bases/Element';
 
 import { convertUnits, countLevels } from '../helpers';
 
-export const Element = ({
+export const Element: React.FC<Props & Events> = ({
   color,
   shadow = '',
   colorify = false,
@@ -17,7 +17,7 @@ export const Element = ({
   touchable,
   children,
   ...props
-}: Props & Events & { children?: Children }): ReactElement => {
+}) => {
   const el = useRef<HTMLDivElement>(null);
 
   const [layers, setLayers] = useState('');

@@ -1,7 +1,6 @@
-import { Depth, Children } from '../types';
+import { Depth } from '../types';
 
 export default interface Text {
   readonly depth: Depth;
   readonly layers: string;
-  readonly children: Children;
 }

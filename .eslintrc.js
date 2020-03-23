@@ -3,27 +3,28 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:prettier/recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
   ],
   plugins: ['prettier', 'react-hooks'],
   env: {
-    browser: true
+    browser: true,
   },
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'no-unused-vars': 'off'
+    'react/prop-types': 'off',
+    'no-unused-vars': 'off',
   },
   settings: {
     react: {
-      version: 'detect'
-    }
-  }
+      version: 'detect',
+    },
+  },
 };

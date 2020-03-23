@@ -1,20 +1,20 @@
-import React, { useState, useEffect, ReactElement } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Base } from '../bases/Text';
 
 import { Props } from '../interfaces';
-import { Children, Depth } from '../types';
+import { Depth } from '../types';
 
 import { convertUnits, countLevels } from '../helpers';
 
-export const Text = ({
+export const Text: React.FC<Props> = ({
   color,
   shadow = '',
   colorify = false,
   perspective = { x: 5, y: 5 },
   children,
   ...props
-}: Props & { children: Children }): ReactElement => {
+}) => {
   const [layers, setLayers] = useState('');
 
   const depth: Depth = {
