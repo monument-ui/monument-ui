@@ -1,4 +1,4 @@
-import { Actions } from '../enums';
+import { Actions } from './Actions';
 
 export type Events = {
   readonly hoverable?: Actions;

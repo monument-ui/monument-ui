@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import { ElementBase } from '../interfaces';
 
-import { Actions } from '../enums';
-
 const pushed = `
   transform: translate3d(0, 0, 0);
   box-shadow: 0 0 0 0 #0000;
@@ -18,7 +16,7 @@ export const Base = styled.div<ElementBase>`
     ${animate && `transition: transform 300ms ease, box-shadow 300ms ease;`}
 
     ${
-      clickable === Actions.Push
+      clickable === 'push'
         ? `
       &:focus,
       &:active {
@@ -29,7 +27,7 @@ export const Base = styled.div<ElementBase>`
     }
     
     ${
-      hoverable === Actions.Push
+      hoverable === 'push'
         ? `
       &:not(:focus):hover,
       &:not(:active):hover {
@@ -40,7 +38,7 @@ export const Base = styled.div<ElementBase>`
     }
 
     ${
-      touchable === Actions.Push
+      touchable === 'push'
         ? `
       &:hover {
         ${pushed}

@@ -1,6 +1,4 @@
-import { Depth } from '../types';
-
-import { Actions } from '../enums';
+import { Depth, Actions } from '../types';
 
 export default interface Element {
   readonly depth: Depth;
