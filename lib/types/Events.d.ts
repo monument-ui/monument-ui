@@ -1,5 +1,6 @@
+import { Actions } from '../enums';
 export declare type Events = {
-    readonly hoverable?: 'pull' | 'push';
-    readonly clickable?: 'push' | 'pull';
-    readonly touchable?: 'push' | 'pull';
+    readonly hoverable?: Actions;
+    readonly clickable?: Actions;
+    readonly touchable?: Actions;
 };

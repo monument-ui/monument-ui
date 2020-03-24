@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import { Props } from '../interfaces';
-import { Events, Actions, Depth } from '../types';
+
+import { Events, Depth } from '../types';
+
+import { Actions } from '../enums';
 
 import { Base } from '../bases/Element';
 
@@ -41,9 +44,9 @@ export const Element: React.FC<Props & Events> = ({
       let extraY: number;
 
       if (
-        (clickEvent && clickable === 'pull') ||
-        (hoverEvent && hoverable === 'pull') ||
-        (touchEvent && touchable === 'pull')
+        (clickEvent && clickable === Actions.Pull) ||
+        (hoverEvent && hoverable === Actions.Pull) ||
+        (touchEvent && touchable === Actions.Pull)
       ) {
         extraX = x > 0 ? x / 2 : x < 0 ? -x / 2 : 0;
         extraY = y > 0 ? y / 2 : y < 0 ? -y / 2 : 0;
