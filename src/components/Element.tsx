@@ -7,10 +7,12 @@ import { Base } from '../bases/Element';
 
 import { convertUnits, countLevels } from '../helpers';
 
+import { Colorify } from '../enums/Colorify';
+
 export const Element: React.FC<Props & Events> = ({
   color,
   shadow = '',
-  colorify = false,
+  colorify = Colorify.Auto,
   perspective = { x: 5, y: 5 },
   clickable,
   hoverable,

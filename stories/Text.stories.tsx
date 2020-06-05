@@ -1,9 +1,8 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 import { withKnobs, text, boolean, color } from '@storybook/addon-knobs';
 
-import { Text } from '../lib/monument-ui.esm';
+import { Text } from '../src';
 
 const wrapperStyles = {
   display: 'flex',
